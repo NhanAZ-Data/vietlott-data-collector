@@ -7,7 +7,7 @@
     "structural_validity": "Deterministic validation of identifier width, result shape, number range and uniqueness rules."
   },
   "duplicate_draw_examples": [],
-  "generated_from_dataset_at": "2026-07-16T15:51:58+00:00",
+  "generated_from_dataset_at": "2026-07-17T16:00:51+00:00",
   "grain": "one canonical row per (product, draw_id)",
   "limitations": [
     "Legacy canonical rows do not always retain every raw source observation. Conflict counts are therefore reported as unavailable rather than zero.",
@@ -17,9 +17,9 @@
     "bingo18": {
       "candidate_gaps": {
         "classification_counts": {
-          "unresolved": 2401
+          "unresolved": 2444
         },
-        "count": 2401,
+        "count": 2444,
         "interpretation": "An absent numeric ID is a candidate gap only. It is not classified as a missing draw without source evidence.",
         "ranges": [
           {
@@ -1005,6 +1005,36 @@
             "count": 7,
             "first_id": "0176948",
             "last_id": "0176954"
+          },
+          {
+            "classification": "unresolved",
+            "count": 20,
+            "first_id": "0176987",
+            "last_id": "0177006"
+          },
+          {
+            "classification": "unresolved",
+            "count": 10,
+            "first_id": "0177022",
+            "last_id": "0177031"
+          },
+          {
+            "classification": "unresolved",
+            "count": 8,
+            "first_id": "0177047",
+            "last_id": "0177054"
+          },
+          {
+            "classification": "unresolved",
+            "count": 4,
+            "first_id": "0177070",
+            "last_id": "0177073"
+          },
+          {
+            "classification": "unresolved",
+            "count": 1,
+            "first_id": "0177115",
+            "last_id": "0177115"
           }
         ]
       },
@@ -1015,63 +1045,63 @@
         "validation_mismatches": 0
       },
       "draw_confirmation": {
-        "confirmed": 91423,
+        "confirmed": 91539,
         "not_confirmed": 30
       },
       "first_date": "2024-12-03",
-      "last_date": "2026-07-16",
-      "max_id": "0176976",
+      "last_date": "2026-07-17",
+      "max_id": "0177135",
       "min_id": "0083123",
       "prize_coverage": {
         "draws_with_prize_rows": 30,
         "prize_rows": 3000,
-        "rate": 0.00032804
+        "rate": 0.00032762
       },
       "prize_status": {
         "complete": 30,
         "not_applicable": 30,
-        "rules_available": 91393
+        "rules_available": 91509
       },
       "result_coverage": {
         "rate": 1.0,
-        "rows_with_result": 91453
+        "rows_with_result": 91569
       },
-      "rows": 91453,
+      "rows": 91569,
       "source_agreement": {
         "conflict_count_reason": "Raw source observations were not retained consistently in legacy rows.",
         "conflicts": null,
         "multi_source_consensus": 0,
         "official_direct": 943,
         "official_verified_match": 15,
-        "pending_official": 2889,
+        "pending_official": 3005,
         "single_secondary_source": 75730,
         "unknown": 11876
       },
       "source_origin": {
         "community": 75730,
         "official": 958,
-        "secondary": 2889,
+        "secondary": 3005,
         "unknown": 11876
       },
       "source_verification": {
         "official_direct": 943,
         "official_verified_match": 15,
-        "pending_official": 2889,
+        "pending_official": 3005,
         "single_secondary_source": 75730,
         "unknown": 11876
       },
       "structural_validity": {
         "unchecked": 15,
-        "valid": 91438
+        "valid": 91554
       }
     },
     "keno": {
       "candidate_gaps": {
         "classification_counts": {
           "known_not_issued": 75,
-          "unresolved": 1252
+          "unresolved": 1269
         },
-        "count": 1327,
+        "count": 1344,
         "interpretation": "An absent numeric ID is a candidate gap only. It is not classified as a missing draw without source evidence.",
         "ranges": [
           {
@@ -1799,6 +1829,24 @@
             "count": 1,
             "first_id": "0288576",
             "last_id": "0288576"
+          },
+          {
+            "classification": "unresolved",
+            "count": 11,
+            "first_id": "0288605",
+            "last_id": "0288615"
+          },
+          {
+            "classification": "unresolved",
+            "count": 3,
+            "first_id": "0288631",
+            "last_id": "0288633"
+          },
+          {
+            "classification": "unresolved",
+            "count": 3,
+            "first_id": "0288649",
+            "last_id": "0288651"
           }
         ]
       },
@@ -1809,53 +1857,53 @@
         "validation_mismatches": 0
       },
       "draw_confirmation": {
-        "confirmed": 287238,
+        "confirmed": 287340,
         "not_confirmed": 31
       },
       "first_date": "2019-08-23",
-      "last_date": "2026-07-16",
-      "max_id": "0288596",
+      "last_date": "2026-07-17",
+      "max_id": "0288715",
       "min_id": "0000001",
       "prize_coverage": {
         "draws_with_prize_rows": 30,
         "prize_rows": 1380,
-        "rate": 0.00010443
+        "rate": 0.00010439
       },
       "prize_status": {
         "complete": 30,
         "not_applicable": 31,
-        "rules_available": 287208
+        "rules_available": 287310
       },
       "result_coverage": {
         "rate": 1.0,
-        "rows_with_result": 287269
+        "rows_with_result": 287371
       },
-      "rows": 287269,
+      "rows": 287371,
       "source_agreement": {
         "conflict_count_reason": "Raw source observations were not retained consistently in legacy rows.",
         "conflicts": null,
         "multi_source_consensus": 0,
         "official_direct": 0,
         "official_verified_match": 15,
-        "pending_official": 2653,
+        "pending_official": 2755,
         "single_secondary_source": 284312,
         "unknown": 289
       },
       "source_origin": {
         "community": 73376,
         "official": 15,
-        "secondary": 213589,
+        "secondary": 213691,
         "unknown": 289
       },
       "source_verification": {
         "official_verified_match": 15,
-        "pending_official": 2653,
+        "pending_official": 2755,
         "single_secondary_source": 284312,
         "unknown": 289
       },
       "structural_validity": {
         "unchecked": 15,
-        "valid": 287254
+        "valid": 287356
       }
     },
     "lotto535": {
@@ -1872,46 +1920,46 @@
         "validation_mismatches": 0
       },
       "draw_confirmation": {
-        "confirmed": 766
+        "confirmed": 768
       },
       "first_date": "2025-06-29",
-      "last_date": "2026-07-16",
-      "max_id": "00766",
+      "last_date": "2026-07-17",
+      "max_id": "00768",
       "min_id": "00001",
       "prize_coverage": {
-        "draws_with_prize_rows": 766,
-        "prize_rows": 6062,
+        "draws_with_prize_rows": 768,
+        "prize_rows": 6076,
         "rate": 1.0
       },
       "prize_status": {
         "complete": 700,
-        "secondary_complete": 66
+        "secondary_complete": 68
       },
       "result_coverage": {
         "rate": 1.0,
-        "rows_with_result": 766
+        "rows_with_result": 768
       },
-      "rows": 766,
+      "rows": 768,
       "source_agreement": {
         "conflict_count_reason": "Raw source observations were not retained consistently in legacy rows.",
         "conflicts": null,
         "multi_source_consensus": 0,
         "official_direct": 0,
         "official_verified_match": 700,
-        "pending_official": 66,
+        "pending_official": 68,
         "single_secondary_source": 0,
         "unknown": 0
       },
       "source_origin": {
         "official": 700,
-        "secondary": 66
+        "secondary": 68
       },
       "source_verification": {
         "official_verified_match": 700,
-        "pending_official": 66
+        "pending_official": 68
       },
       "structural_validity": {
-        "valid": 766
+        "valid": 768
       }
     },
     "max3d": {
@@ -1928,46 +1976,46 @@
         "validation_mismatches": 0
       },
       "draw_confirmation": {
-        "confirmed": 1106
+        "confirmed": 1107
       },
       "first_date": "2019-04-22",
-      "last_date": "2026-07-15",
-      "max_id": "01106",
+      "last_date": "2026-07-17",
+      "max_id": "01107",
       "min_id": "00001",
       "prize_coverage": {
-        "draws_with_prize_rows": 1106,
-        "prize_rows": 12166,
+        "draws_with_prize_rows": 1107,
+        "prize_rows": 12177,
         "rate": 1.0
       },
       "prize_status": {
         "complete": 1092,
-        "secondary_complete": 14
+        "secondary_complete": 15
       },
       "result_coverage": {
         "rate": 1.0,
-        "rows_with_result": 1106
+        "rows_with_result": 1107
       },
-      "rows": 1106,
+      "rows": 1107,
       "source_agreement": {
         "conflict_count_reason": "Raw source observations were not retained consistently in legacy rows.",
         "conflicts": null,
         "multi_source_consensus": 0,
         "official_direct": 0,
         "official_verified_match": 1092,
-        "pending_official": 14,
+        "pending_official": 15,
         "single_secondary_source": 0,
         "unknown": 0
       },
       "source_origin": {
         "official": 1092,
-        "secondary": 14
+        "secondary": 15
       },
       "source_verification": {
         "official_verified_match": 1092,
-        "pending_official": 14
+        "pending_official": 15
       },
       "structural_validity": {
-        "valid": 1106
+        "valid": 1107
       }
     },
     "max3dpro": {
@@ -2093,46 +2141,46 @@
         "validation_mismatches": 0
       },
       "draw_confirmation": {
-        "confirmed": 1536
+        "confirmed": 1537
       },
       "first_date": "2016-07-20",
-      "last_date": "2026-07-15",
-      "max_id": "01536",
+      "last_date": "2026-07-17",
+      "max_id": "01537",
       "min_id": "00001",
       "prize_coverage": {
-        "draws_with_prize_rows": 1536,
-        "prize_rows": 6144,
+        "draws_with_prize_rows": 1537,
+        "prize_rows": 6148,
         "rate": 1.0
       },
       "prize_status": {
         "complete": 1522,
-        "secondary_complete": 14
+        "secondary_complete": 15
       },
       "result_coverage": {
         "rate": 1.0,
-        "rows_with_result": 1536
+        "rows_with_result": 1537
       },
-      "rows": 1536,
+      "rows": 1537,
       "source_agreement": {
         "conflict_count_reason": "Raw source observations were not retained consistently in legacy rows.",
         "conflicts": null,
         "multi_source_consensus": 0,
         "official_direct": 0,
         "official_verified_match": 1522,
-        "pending_official": 14,
+        "pending_official": 15,
         "single_secondary_source": 0,
         "unknown": 0
       },
       "source_origin": {
         "official": 1522,
-        "secondary": 14
+        "secondary": 15
       },
       "source_verification": {
         "official_verified_match": 1522,
-        "pending_official": 14
+        "pending_official": 15
       },
       "structural_validity": {
-        "valid": 1536
+        "valid": 1537
       }
     },
     "power655": {
@@ -2196,12 +2244,12 @@
   "schema_version": 1,
   "totals": {
     "cross_checked_rows": 6163,
-    "draw_rows": 384977,
-    "draws_with_prizes": 6315,
+    "draw_rows": 385199,
+    "draws_with_prizes": 6319,
     "duplicate_draw_keys": 0,
     "official_source_rows": 7106,
-    "prize_rows": 46174,
-    "result_rows": 384977,
-    "structurally_valid_rows": 384947
+    "prize_rows": 46203,
+    "result_rows": 385199,
+    "structurally_valid_rows": 385169
   }
 }
