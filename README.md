@@ -13,8 +13,8 @@ Collector lưu kết quả kỳ quay, giải thưởng, trạng thái xác nhậ
 Yêu cầu Python 3.11 trở lên.
 
 ```powershell
-git clone https://github.com/NhanAZ-Data/vietlott-research.git
-cd vietlott-research
+git clone https://github.com/NhanAZ-Data/vietlott-data-collector.git
+cd vietlott-data-collector
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -e '.[parquet]'
