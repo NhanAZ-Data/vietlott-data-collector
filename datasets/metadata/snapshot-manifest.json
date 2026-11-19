@@ -1,13 +1,18 @@
 {
   "dataset_rows": {
-    "draws": 1074,
-    "prizes": 5176
+    "draws": 1075,
+    "prizes": 5187
   },
   "date_range": {
     "first": "2016-07-20",
-    "last": "2019-04-21"
+    "last": "2019-04-22"
   },
   "files": {
+    "draws/max3d/all.csv": {
+      "bytes": 907,
+      "data_rows": 1,
+      "sha256": "ab4a2ff1d279de7e1267c9188de6fb1a8686b4986a4ffd1002b99a09cd9cc566"
+    },
     "draws/max4d/all.csv": {
       "bytes": 255565,
       "data_rows": 376,
@@ -29,12 +34,12 @@
       "sha256": "f810d218086ee5a33ec1c08808e351891bb7a703757efea9c5c8ff4cf698f260"
     },
     "metadata/dataset-summary.json": {
-      "bytes": 1021,
-      "sha256": "ac5e453ae964f2cd46fa11c27d39a9675002f801b1a9646c156ab3f69f3dd3e6"
+      "bytes": 1234,
+      "sha256": "211d710c8fa2ad5f1e887750fe2dc91c44113e57ef6b3b18ded4c2f39b0fb78c"
     },
     "metadata/quality-report.json": {
-      "bytes": 1372,
-      "sha256": "97d4d53a3949e136f9ab0204a77a079c337e49bb8e67794e5f32f65d5e144392"
+      "bytes": 1506,
+      "sha256": "3f9860d500a38afd30c032c4bb9cc08e1228b291ad34b470ea6b927c9e6ee58f"
     },
     "metadata/retrospective-reconstruction.json": {
       "bytes": 1046,
@@ -43,6 +48,11 @@
     "prize_rules.csv": {
       "bytes": 89189,
       "sha256": "75233d5dc234723fd4ccc9f01e272f5680c1d8a33dd7ae1431854f58c5453d7d"
+    },
+    "prizes/max3d/all.csv": {
+      "bytes": 5379,
+      "data_rows": 11,
+      "sha256": "fb9110d61e669028872c7f0133d18e52050ecb2d887371a7a6193cde7bb04f2b"
     },
     "prizes/max4d/all.csv": {
       "bytes": 825098,

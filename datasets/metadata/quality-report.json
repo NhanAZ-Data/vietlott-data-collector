@@ -6,6 +6,12 @@
     "Per-row validation_status, draw_status, fetched_at and provenance are retained."
   ],
   "products": {
+    "max3d": {
+      "draw_rows": 1,
+      "first_date": "2019-04-22",
+      "last_date": "2019-04-22",
+      "prize_rows": 11
+    },
     "max4d": {
       "draw_rows": 376,
       "first_date": "2016-11-19",
@@ -35,10 +41,10 @@
   "report_version": "retrospective-reconstruction-v1",
   "schema_version": 1,
   "totals": {
-    "draw_rows": 1074,
-    "draws_with_prizes": 1074,
+    "draw_rows": 1075,
+    "draws_with_prizes": 1075,
     "duplicate_draw_keys": 0,
-    "prize_rows": 5176,
-    "result_rows": 1074
+    "prize_rows": 5187,
+    "result_rows": 1075
   }
 }
