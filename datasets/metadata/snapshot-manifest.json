@@ -1,11 +1,11 @@
 {
   "dataset_rows": {
-    "draws": 79616,
-    "prizes": 15824
+    "draws": 79712,
+    "prizes": 15835
   },
   "date_range": {
     "first": "2016-07-20",
-    "last": "2021-12-19"
+    "last": "2021-12-20"
   },
   "files": {
     "draws/keno/2019-08.csv": {
@@ -149,14 +149,14 @@
       "sha256": "1845aea7104c57b725ef0fa67c2aad1256f386805494c6cd1d72e14047ad8f7f"
     },
     "draws/keno/2021-12.csv": {
-      "bytes": 759458,
-      "data_rows": 1805,
-      "sha256": "af06e062fa65bfe24cec0a44cce40c377507fb40b33802f0f4e3e1751542cfa7"
+      "bytes": 799457,
+      "data_rows": 1900,
+      "sha256": "e5602c2c6aff519b0e415226bf39a50e76c082e5d57094d00a3f7c94d65cdb2f"
     },
     "draws/max3d/all.csv": {
-      "bytes": 331312,
-      "data_rows": 395,
-      "sha256": "f3e373e47027e0baa12a15f6acd573cfdf29e1d891c2d5cb4ba0a08f61646d65"
+      "bytes": 332153,
+      "data_rows": 396,
+      "sha256": "fe785b9a71e9cbb01122b684890ab65e97047a2b90314ee6787e314c5e8e5d04"
     },
     "draws/max3dpro/all.csv": {
       "bytes": 36119,
@@ -185,11 +185,11 @@
     },
     "metadata/dataset-summary.json": {
       "bytes": 1683,
-      "sha256": "a9ddcbc2208423351de16550e08ffcf7b31ee29d39bc1addf8b9895e61ce1fa6"
+      "sha256": "5f12465503da8510730ede7c36320d1d32ad934d0e35ca987a1c04a49da4b83d"
     },
     "metadata/quality-report.json": {
       "bytes": 1788,
-      "sha256": "2b58fdd4d72b8bf98e3964c84af75c5fca86a2dafcecd67aa8dd66a2243c2a20"
+      "sha256": "b554188dd78ab3a3ff867853a71616b4394356a94e66416a3a622af3e2de9303"
     },
     "metadata/retrospective-reconstruction.json": {
       "bytes": 1046,
@@ -200,9 +200,9 @@
       "sha256": "75233d5dc234723fd4ccc9f01e272f5680c1d8a33dd7ae1431854f58c5453d7d"
     },
     "prizes/max3d/all.csv": {
-      "bytes": 2077320,
-      "data_rows": 4345,
-      "sha256": "ba2e81438a175f3f2d3475bb54128d1d4c02c7f5647cbbfcfca81a5162b3b741"
+      "bytes": 2082578,
+      "data_rows": 4356,
+      "sha256": "ba9c8195bf5910c262b42a57545b603a29ec44bb8f07dff5b83da894e22712dd"
     },
     "prizes/max3dpro/all.csv": {
       "bytes": 171085,
@@ -233,5 +233,5 @@
   "parser_version": "0.2.0",
   "repository_commit": "a6c89820a62907c1c9ecd1f4b3ab26964aedee2c",
   "schema_version": 1,
-  "snapshot_at": "2026-06-13T20:52:19+00:00"
+  "snapshot_at": "2026-06-13T20:52:23+00:00"
 }
