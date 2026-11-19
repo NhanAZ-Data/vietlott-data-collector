@@ -1,17 +1,17 @@
 # Data quality and provenance
 
-Snapshot quality is checked across three independent layers: record structure, source evidence, and repository coverage. The report is written to `datasets/metadata/quality-report.json` on the data branch and included in each daily release.
+Snapshot quality is checked in three independent areas. These cover record structure, source evidence, and repository coverage. The report is written to `datasets/metadata/quality-report.json` on the data branch and included in each daily release.
 
 ## Structural checks
 
 The collector checks:
 
-- uniqueness of `(product, draw_id)` and prize-row keys;
-- required columns and valid JSON;
-- draw IDs, dates, number ranges, counts, and product-specific uniqueness rules;
-- prize rows linked to an existing draw;
-- draw and prize statuses against known enum values;
-- file sizes against publishing limits.
+- Uniqueness of `(product, draw_id)` and prize-row keys.
+- Required columns and valid JSON.
+- Draw IDs, dates, number ranges, counts, and product-specific uniqueness rules.
+- Prize rows linked to an existing draw.
+- Draw and prize statuses against known enum values.
+- File sizes against publishing limits.
 
 ## Provenance
 

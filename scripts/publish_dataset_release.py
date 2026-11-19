@@ -60,25 +60,32 @@ def publish_release(
 
     report = validate_repository_data(data_dir)
     if not report.get("valid"):
-        details = "; ".join(str(error) for error in report.get("errors", []))
-        raise RuntimeError(f"Dataset failed validation: {details}")
+        details = "\n".join(str(error) for error in report.get("errors", []))
+        message = "Dataset validation failed."
+        if details:
+            message = f"{message}\n{details}"
+        raise RuntimeError(message)
 
     tag = f"data-{day.isoformat()}"
     tag_match = TAG_PATTERN.fullmatch(tag)
     if not tag_match or tag_match.group(1) != day.isoformat():
-        raise RuntimeError(f"Invalid release tag: {tag}")
+        raise RuntimeError(f"Release tag {tag} is invalid.")
 
     head = run_git(repository, "rev-parse", "HEAD")
     existing_remote = remote_tag(repository, tag)
     if existing_remote and existing_remote != head:
         raise RuntimeError(
-            f"Tag {tag} already points to {existing_remote}, current dataset commit is {head}. "
+            f"Tag {tag} already points to {existing_remote}. "
+            f"The current dataset commit is {head}. "
             "Use a correction tag such as data-YYYY-MM-DD-r2 instead of replacing it."
         )
 
     local_tag = run_git(repository, "rev-parse", f"refs/tags/{tag}^{{commit}}", check=False)
     if local_tag and local_tag != head:
-        raise RuntimeError(f"Local tag {tag} points to {local_tag}, current dataset commit is {head}")
+        raise RuntimeError(
+            f"Local tag {tag} points to {local_tag}. "
+            f"The current dataset commit is {head}."
+        )
     if not existing_remote:
         if local_tag:
             run_git(repository, "push", "origin", f"refs/tags/{tag}:refs/tags/{tag}")
@@ -100,11 +107,13 @@ def publish_release(
         days=1, seconds=-1
     )
     notes = (
-        f"Full dataset snapshot as of {snapshot_cutoff.isoformat(timespec='seconds')}.\n\n"
-        f"Snapshot commit: `{head}`\n"
-        f"Collector source commit: `{source_commit}`\n"
-        f"Draw rows: {report.get('draw_rows', 0)}\n"
-        f"Prize rows: {report.get('prize_rows', 0)}\n\n"
+        "This full dataset snapshot was created at "
+        f"{snapshot_cutoff.isoformat(timespec='seconds')}.\n\n"
+        f"The snapshot commit is `{head}`.\n"
+        f"The collector source commit is `{source_commit}`.\n"
+        "The snapshot contains "
+        f"{report.get('draw_rows', 0)} draw rows and "
+        f"{report.get('prize_rows', 0)} prize rows.\n\n"
         "Verify individual files with `datasets/metadata/snapshot-manifest.json`."
     )
     subprocess.run(
