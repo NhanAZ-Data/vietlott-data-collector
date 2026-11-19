@@ -176,8 +176,11 @@ class SourceRows:
 def read_source(source_dir: Path) -> SourceRows:
     report = validate_repository_data(source_dir)
     if not report.get("valid"):
-        errors = "; ".join(str(error) for error in report.get("errors", []))
-        raise RuntimeError(f"Source dataset is invalid: {errors}")
+        errors = "\n".join(str(error) for error in report.get("errors", []))
+        message = "The source dataset is invalid."
+        if errors:
+            message = f"{message}\n{errors}"
+        raise RuntimeError(message)
 
     draws_by_date: dict[date, list[tuple[str, ...]]] = defaultdict(list)
     draw_dates: dict[tuple[str, str], date] = {}
@@ -189,7 +192,9 @@ def read_source(source_dir: Path) -> SourceRows:
             for row in reader:
                 product = row["product"]
                 if not re.fullmatch(r"[a-z0-9_-]+", product):
-                    raise RuntimeError(f"Unsafe product name in source data: {product!r}")
+                    raise RuntimeError(
+                        f"Source data contains unsafe product name {product!r}."
+                    )
                 draw_date = strict_date(row["draw_date"])
                 key = (product, row["draw_id"])
                 draw_dates[key] = draw_date
@@ -204,7 +209,7 @@ def read_source(source_dir: Path) -> SourceRows:
             for row in reader:
                 key = (row["product"], row["draw_id"])
                 if key not in draw_dates:
-                    raise RuntimeError(f"Orphan prize row in source data: {key}")
+                    raise RuntimeError(f"Source data contains orphan prize row {key}.")
                 prizes_by_draw[key].append(
                     tuple(row[column] or "" for column in PRIZE_COLUMNS)
                 )
@@ -566,7 +571,9 @@ class SnapshotBuilder:
 def parse_repository(remote: str) -> str:
     match = re.search(r"github\.com[:/]([^/]+/[^/.]+?)(?:\.git)?$", remote)
     if not match:
-        raise RuntimeError(f"Cannot determine GitHub repository from origin URL: {remote}")
+        raise RuntimeError(
+            f"Cannot determine the GitHub repository from origin URL {remote}."
+        )
     return match.group(1)
 
 

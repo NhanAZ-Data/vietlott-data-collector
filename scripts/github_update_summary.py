@@ -35,8 +35,13 @@ def render_summary(
                     f"{int(update_report.get('official_source_errors', 0)):,} |"
                 ),
                 "",
-                "Fallback sources used: "
-                + (", ".join(fallbacks) if fallbacks else "none"),
+                (
+                    "The collector used a secondary fallback for "
+                    + ", ".join(fallbacks)
+                    + "."
+                    if fallbacks
+                    else "The collector did not use a secondary fallback."
+                ),
                 "",
             ]
         )
@@ -51,13 +56,18 @@ def render_summary(
     else:
         valid = bool(validation_report.get("valid"))
         errors = validation_report.get("errors", [])
+        error_count = len(errors)
+        error_label = "error" if error_count == 1 else "errors"
         lines.extend(
             [
-                f"Dataset validation: {'passed' if valid else 'failed'}.",
+                f"The dataset {'passed' if valid else 'failed'} validation.",
                 "",
-                f"- Draw rows: {int(validation_report.get('draw_rows', 0)):,}",
-                f"- Prize rows: {int(validation_report.get('prize_rows', 0)):,}",
-                f"- Errors: {len(errors)}",
+                (
+                    "The snapshot contains "
+                    f"{int(validation_report.get('draw_rows', 0)):,} draw rows and "
+                    f"{int(validation_report.get('prize_rows', 0)):,} prize rows."
+                ),
+                f"Validation reported {error_count} {error_label}.",
                 "",
             ]
         )

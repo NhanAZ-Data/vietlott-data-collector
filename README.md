@@ -4,7 +4,7 @@
 
 ## Supported products
 
-The collector supports eight products: Mega 6/45 (`mega645`), Power 6/55 (`power655`), Lotto 5/35 (`lotto535`), Max 3D (`max3d`), Max 3D Pro (`max3dpro`), Max 4D (`max4d`), Keno (`keno`), and Bingo18 (`bingo18`).
+Supported products include Mega 6/45 (`mega645`), Power 6/55 (`power655`), Lotto 5/35 (`lotto535`), Max 3D (`max3d`), Max 3D Pro (`max3dpro`), Max 4D (`max4d`), Keno (`keno`), and Bingo18 (`bingo18`).
 
 Each record retains draw results, prize data, confirmation status, and source provenance. Every snapshot includes CSV files, quality metadata, and a hash manifest so users can identify and verify a data version.
 
