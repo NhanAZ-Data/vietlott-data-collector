@@ -1,18 +1,18 @@
 {
-  "confirmed_rows": 70234,
-  "dataset_updated_at": "2026-06-13T20:49:01+00:00",
-  "draw_rows": 70234,
+  "confirmed_rows": 70331,
+  "dataset_updated_at": "2026-06-13T20:49:03+00:00",
+  "draw_rows": 70331,
   "not_confirmed_rows": 0,
-  "prize_rows": 14659,
+  "prize_rows": 14672,
   "products": {
     "keno": {
-      "confirmed_rows": 67756,
+      "confirmed_rows": 67851,
       "first_date": "2019-08-23",
-      "last_date": "2021-09-13",
-      "max_id": "0067830",
+      "last_date": "2021-09-14",
+      "max_id": "0067925",
       "min_id": "0000001",
       "not_confirmed_rows": 0,
-      "rows": 67756
+      "rows": 67851
     },
     "max3d": {
       "confirmed_rows": 354,
@@ -22,6 +22,15 @@
       "min_id": "00001",
       "not_confirmed_rows": 0,
       "rows": 354
+    },
+    "max3dpro": {
+      "confirmed_rows": 1,
+      "first_date": "2021-09-14",
+      "last_date": "2021-09-14",
+      "max_id": "00001",
+      "min_id": "00001",
+      "not_confirmed_rows": 0,
+      "rows": 1
     },
     "max4d": {
       "confirmed_rows": 722,
@@ -42,13 +51,13 @@
       "rows": 783
     },
     "power655": {
-      "confirmed_rows": 619,
+      "confirmed_rows": 620,
       "first_date": "2017-08-01",
-      "last_date": "2021-09-11",
-      "max_id": "00619",
+      "last_date": "2021-09-14",
+      "max_id": "00620",
       "min_id": "00001",
       "not_confirmed_rows": 0,
-      "rows": 619
+      "rows": 620
     }
   },
   "schema_version": 1,
