@@ -25,7 +25,7 @@ Bản ghi từ nguồn đối chiếu phải có provenance trong `attributes_js
 
 Hai sản phẩm tần suất cao có collector lịch sử riêng. Khoảng trống mã kỳ chỉ được bổ sung khi có quan sát độc lập đủ cấu trúc; mã bị thông báo không phát hành được ghi vào `datasets/exclusions.csv` hoặc giữ với `draw_status=not_confirmed`. Không suy ra kết quả từ mã trước và sau.
 
-Snapshot mới nhất được lưu trên nhánh `datasets`. Mỗi release `data-YYYY-MM-DD` giữ snapshot đầy đủ tại thời điểm chốt ngày.
+Snapshot mới nhất được lưu trên nhánh `datasets`. Mỗi release `data-YYYY-MM-DD` giữ snapshot đầy đủ tại thời điểm chốt ngày. Snapshot tái dựng từ năm 2017 nằm trên nhánh `reconstructed-datasets`, với tag `reconstructed-YYYY-MM-DD`. Các tag này lọc theo ngày quay từ dữ liệu hiện có và không thể hiện điều collector đã biết tại thời điểm lịch sử đó. Xem `snapshot-index.json` trên nhánh tái dựng để biết đầy đủ phạm vi và giới hạn.
 
 ## Quy trình một lượt
 

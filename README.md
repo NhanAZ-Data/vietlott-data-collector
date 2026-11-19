@@ -56,7 +56,9 @@ Thay `csv` bằng `parquet` nếu đã cài extra `parquet`. Hãy thay `you@exam
 
 ## Dùng snapshot đã phát hành
 
-Tải snapshot mới nhất từ [nhánh `datasets`](https://github.com/NhanAZ-Data/vietlott-data-collector/tree/datasets) hoặc chọn ngày trong [danh sách Releases](https://github.com/NhanAZ-Data/vietlott-data-collector/releases). Nhánh dữ liệu thay đổi khi có kỳ mới. Release theo tag `data-YYYY-MM-DD` là snapshot cố định theo ngày.
+Tải snapshot mới nhất từ [nhánh `datasets`](https://github.com/NhanAZ-Data/vietlott-data-collector/tree/datasets) hoặc chọn ngày trong [danh sách Releases](https://github.com/NhanAZ-Data/vietlott-data-collector/releases). Nhánh dữ liệu thay đổi khi có kỳ mới. Release theo tag `data-YYYY-MM-DD` là snapshot cố định được lưu tại thời điểm chốt ngày. Chuỗi release chính xác hằng ngày bắt đầu từ 2026-06-14.
+
+Để xem lịch sử từ năm 2017, dùng [nhánh snapshot tái dựng](https://github.com/NhanAZ-Data/vietlott-data-collector/tree/reconstructed-datasets) và [chỉ mục snapshot](https://github.com/NhanAZ-Data/vietlott-data-collector/blob/reconstructed-datasets/snapshot-index.json). Tag `reconstructed-YYYY-MM-DD` lọc dữ liệu hiện có theo `draw_date` đến ngày đó. Đây là bản tái dựng hồi cứu, không thể hiện dữ liệu Vietlott hoặc collector đã biết vào ngày trong tag. Các dòng vẫn giữ `fetched_at` và provenance gốc, nên có thể mang thời điểm muộn hơn ngày tái dựng. Kho hiện có không lưu được lịch sử quan sát đầy đủ từ năm 2017.
 
 Có thể clone riêng nhánh dữ liệu:
 

@@ -2,6 +2,12 @@
 
 Tài liệu này mô tả snapshot trong `datasets/` và kho làm việc do collector tạo ra. Snapshot mới nhất nằm trên nhánh `datasets`. Release `data-YYYY-MM-DD` giữ snapshot đầy đủ tại thời điểm chốt ngày. Các trường được giữ để người dùng có thể tải, kiểm tra và tái sử dụng dữ liệu mà không cần biết nội bộ parser.
 
+## Snapshot tái dựng hồi cứu
+
+Tag `reconstructed-YYYY-MM-DD` trên nhánh `reconstructed-datasets` được tạo bằng cách lọc các dòng của snapshot nguồn hiện tại theo `draw_date` không muộn hơn ngày trong tag. Đây không phải lịch sử dữ liệu đã biết vào ngày đó. Bản ghi giữ nguyên giá trị, `fetched_at` và provenance từ snapshot nguồn, nên các sửa đổi muộn hoặc dữ liệu được thu thập về sau có thể xuất hiện trong tag cũ. Luật giải cũng dùng phiên bản hiện tại vì không có kho phiên bản luật theo thời gian.
+
+`snapshot-index.json` liệt kê ngày, số dòng và liên kết archive cho từng tag. Đọc `datasets/metadata/retrospective-reconstruction.json` trong archive để biết nguồn, mốc lọc và giới hạn của bản tái dựng. Dùng các release `data-YYYY-MM-DD` để lấy snapshot đã được ghi nhận vào đúng thời điểm phát hành.
+
 ## Bố cục snapshot
 
 | Đường dẫn | Nội dung |
