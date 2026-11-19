@@ -12,7 +12,13 @@ from .exclusions import apply_known_exclusions
 from .http import HttpClient, HttpSettings
 from .models import DrawRecord, PrizeRecord, canonical_json, utc_now_iso
 from .pipeline import Collector, CollectorOptions
-from .sources import OfficialVietlottSource, SecondaryBatch, SecondaryResultSource
+from .sources import (
+    OfficialVietlottSource,
+    SecondaryBatch,
+    SecondaryResultSource,
+    XemNhanhBingo18Source,
+    XosoVnmKenoSource,
+)
 from .state import StateStore
 from .storage import SqliteDatasetStore
 
@@ -55,6 +61,16 @@ def run_update(
         with HttpClient(settings) as client:
             source = OfficialVietlottSource(client)
             secondary_source = SecondaryResultSource(client)
+            fallback_sources = {
+                "keno": [
+                    ("xosovnm_api", XosoVnmKenoSource(client).fetch),
+                    ("xosominhngoc", secondary_source.fetch),
+                ],
+                "bingo18": [
+                    ("xemnhanh_vn", XemNhanhBingo18Source(client).fetch),
+                    ("xosominhngoc", secondary_source.fetch),
+                ],
+            }
             state_store = StateStore(output_dir / ".collector-state.json")
             summaries = []
             for include_prizes, selected in (
@@ -81,20 +97,38 @@ def run_update(
             for spec in specs:
                 if spec.slug not in failed_products:
                     continue
-                try:
-                    batch = secondary_source.fetch(
-                        spec,
-                        existing_ids=store.existing_draw_ids(spec.slug),
-                        incomplete_prize_ids=store.incomplete_prize_ids(spec.slug),
-                    )
-                    fallback_reports[spec.slug] = _store_secondary_batch(
-                        store,
-                        batch,
-                    )
-                except Exception as exc:
+                attempts: list[dict[str, str]] = []
+                sources = fallback_sources.get(
+                    spec.slug,
+                    [("xosominhngoc", secondary_source.fetch)],
+                )
+                for source_name, fetch in sources:
+                    try:
+                        batch = fetch(
+                            spec,
+                            existing_ids=store.existing_draw_ids(spec.slug),
+                            incomplete_prize_ids=store.incomplete_prize_ids(spec.slug),
+                        )
+                        fallback_reports[spec.slug] = {
+                            "provider": source_name,
+                            **_store_secondary_batch(store, batch),
+                        }
+                        if attempts:
+                            fallback_reports[spec.slug]["previous_attempt_errors"] = attempts
+                        break
+                    except Exception as exc:
+                        attempts.append({"provider": source_name, "error": str(exc)})
+                        LOGGER.exception(
+                            "Secondary collection failed for %s via %s",
+                            spec.slug,
+                            source_name,
+                        )
+                else:
                     source_errors += 1
-                    fallback_reports[spec.slug] = {"error": str(exc)}
-                    LOGGER.exception("Secondary collection failed for %s", spec.slug)
+                    fallback_reports[spec.slug] = {
+                        "error": attempts[-1]["error"],
+                        "attempts": attempts,
+                    }
 
             for spec in specs:
                 if spec.slug in failed_products:

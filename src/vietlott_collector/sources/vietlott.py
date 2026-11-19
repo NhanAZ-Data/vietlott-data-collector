@@ -88,6 +88,8 @@ class OfficialVietlottSource:
             )
             html = self._response_html(response)
         records = parse_list_page(spec, html)
+        for record in records:
+            record.attributes.setdefault("data_source", "official_vietlott")
         if not records and re.search(r"[?&]id=\d+", html):
             raise RuntimeError(
                 f"The {spec.slug} page contains draw links but no records were parsed; "

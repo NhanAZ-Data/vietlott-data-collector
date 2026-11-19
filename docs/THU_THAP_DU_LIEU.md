@@ -17,7 +17,7 @@ Trang đầu chứa các kỳ gần nhất. Các trang tiếp theo được đ�
 
 ## Nguồn đối chiếu
 
-Khi HTML và AjaxPro chính thức đều không truy cập được, collector có thể đọc trang kết quả công khai của [Xổ Số Minh Ngọc](https://xosominhngoc.net.vn/kqxs-vietlott). Parser yêu cầu đúng mã kỳ, ngày, số lượng kết quả và cấu trúc giải; chỉ một điều kiện sai là từ chối toàn bộ trang.
+Khi HTML và AjaxPro chính thức đều không truy cập được, collector dùng nguồn đối chiếu theo sản phẩm: [API Keno công khai của Xổ Số VN](https://www.xosovnm.net/nguon-api), trang kết quả từng kỳ Bingo18 của [Xem Nhanh](https://xemnhanh.vn/vietlott/bingo18), hoặc trang kết quả của [Xổ Số Minh Ngọc](https://xosominhngoc.net.vn/kqxs-vietlott). Parser yêu cầu mã kỳ, ngày và kết quả hợp lệ; dữ liệu từ các nguồn này được đánh dấu chờ xác nhận chính thức.
 
 Bản ghi từ nguồn đối chiếu phải có provenance trong `attributes_json`, gồm nguồn, URL và trạng thái chờ đối chiếu. Khi nguồn Vietlott hoạt động lại, collector đọc lại và thay thế thông tin nguồn phụ.
 
