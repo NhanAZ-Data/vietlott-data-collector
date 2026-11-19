@@ -1,11 +1,11 @@
 {
   "dataset_rows": {
-    "draws": 101277,
-    "prizes": 18488
+    "draws": 101373,
+    "prizes": 18499
   },
   "date_range": {
     "first": "2016-07-20",
-    "last": "2022-07-31"
+    "last": "2022-08-01"
   },
   "files": {
     "draws/keno/2019-08.csv": {
@@ -188,10 +188,15 @@
       "data_rows": 2945,
       "sha256": "768951ba3eb85dbaa6dccbf08c74081374b56fd7212e18e2098cb794abd9fbd5"
     },
+    "draws/keno/2022-08.csv": {
+      "bytes": 40000,
+      "data_rows": 95,
+      "sha256": "f0555a24ac31a4982aee07eda7b1dbd08f611d6a3dcaab5d4366badb4add69cd"
+    },
     "draws/max3d/all.csv": {
-      "bytes": 411207,
-      "data_rows": 490,
-      "sha256": "1770e36f92fab4f56d586b15a23972f7c1f4aa471a0d4a368f69f062630656c3"
+      "bytes": 412048,
+      "data_rows": 491,
+      "sha256": "849df3ab2f4405a03d5c0b5081a643a24cc49d1e5180dadde9cee2a462048260"
     },
     "draws/max3dpro/all.csv": {
       "bytes": 117439,
@@ -220,11 +225,11 @@
     },
     "metadata/dataset-summary.json": {
       "bytes": 1687,
-      "sha256": "f866606bf17988ca87b1a285ab84425cdd2847492318029063df43dea0394590"
+      "sha256": "f84ff897763bc33e5667c80fd24f573962387a03e4cc826680607d5a02c6fe1d"
     },
     "metadata/quality-report.json": {
       "bytes": 1792,
-      "sha256": "c358cf94cfe9086170dac56c83a5caa9f628c9c084d6301b3a6d5915730a2e77"
+      "sha256": "8ea887cf6949b1ebc2bd6180bd5c2cd651a71eba879c7a1fb240533d39075190"
     },
     "metadata/retrospective-reconstruction.json": {
       "bytes": 1046,
@@ -235,9 +240,9 @@
       "sha256": "75233d5dc234723fd4ccc9f01e272f5680c1d8a33dd7ae1431854f58c5453d7d"
     },
     "prizes/max3d/all.csv": {
-      "bytes": 2576824,
-      "data_rows": 5390,
-      "sha256": "6495e9ecdab243de7a16d2f689e1462f09c075710013f26163237fdb6b2982aa"
+      "bytes": 2582084,
+      "data_rows": 5401,
+      "sha256": "f52fd11bbc8dfab58090ab44e27aaf2065f09011e4a0800fb446b971495b6b73"
     },
     "prizes/max3dpro/all.csv": {
       "bytes": 557789,
@@ -268,5 +273,5 @@
   "parser_version": "0.2.0",
   "repository_commit": "a6c89820a62907c1c9ecd1f4b3ab26964aedee2c",
   "schema_version": 1,
-  "snapshot_at": "2026-06-13T20:59:57+00:00"
+  "snapshot_at": "2026-06-13T20:59:59+00:00"
 }
