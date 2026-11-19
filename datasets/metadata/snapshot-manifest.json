@@ -1,11 +1,11 @@
 {
   "dataset_rows": {
-    "draws": 44533,
-    "prizes": 11748
+    "draws": 44629,
+    "prizes": 11752
   },
   "date_range": {
     "first": "2016-07-20",
-    "last": "2020-12-05"
+    "last": "2020-12-06"
   },
   "files": {
     "draws/keno/2019-08.csv": {
@@ -89,9 +89,9 @@
       "sha256": "404cf11f0142745cd02a1f2a685086944132c059bb1edcbb536baac99ef7d79d"
     },
     "draws/keno/2020-12.csv": {
-      "bytes": 199731,
-      "data_rows": 475,
-      "sha256": "20925f3b36b79d89facd10ed7cb0164d25f121422b8db50702f8c6f3df903734"
+      "bytes": 239643,
+      "data_rows": 570,
+      "sha256": "3dd87f65f61603cd056538426b853678b1cc82b217b52f53aa8580dd7b328ce7"
     },
     "draws/max3d/all.csv": {
       "bytes": 204321,
@@ -104,9 +104,9 @@
       "sha256": "beeb840a75f23d561ba5b84b5343c80d11c21966db20c5b420a43f386eca824a"
     },
     "draws/mega645/all.csv": {
-      "bytes": 434164,
-      "data_rows": 673,
-      "sha256": "a5d07b1991e75b9028017e6c874eb9c26c0575a9658a75c592335d7bf52eb1e9"
+      "bytes": 434867,
+      "data_rows": 674,
+      "sha256": "10084010a5822a3928d2812b1adccfe48a291186471ec19c23f2c68b17c4b4c5"
     },
     "draws/power655/all.csv": {
       "bytes": 338680,
@@ -120,11 +120,11 @@
     },
     "metadata/dataset-summary.json": {
       "bytes": 1465,
-      "sha256": "8ebe3a5bc3e3477e04ecdf50122567af8ab0c4b82499c22474f511675f8906fd"
+      "sha256": "62b6b49fe6ddf1a762023b1a0c9a97309a89dea5e3322df4bb5e869c01b3ddc3"
     },
     "metadata/quality-report.json": {
       "bytes": 1649,
-      "sha256": "99c64aec45c3e65a545ad1f5b1092acd5baf0efd97131efd6dd956a6b726069d"
+      "sha256": "d30e300d6f148ced84c7619caefaae97585ed56b26638c5923116a84f435cca5"
     },
     "metadata/retrospective-reconstruction.json": {
       "bytes": 1046,
@@ -145,9 +145,9 @@
       "sha256": "e9c6772d2357444fbc1fd94d471a1492c2cbd37e35b4739ac3424e565a727b15"
     },
     "prizes/mega645/all.csv": {
-      "bytes": 993461,
-      "data_rows": 2692,
-      "sha256": "c3e6e509b71fe2c1df2044819023b6624b4a28984c1a3744c44adb5516596a9b"
+      "bytes": 994938,
+      "data_rows": 2696,
+      "sha256": "6d7c4f40fd52e82d29e126b23eba14377ef7120da858b52a3f5478659f218a58"
     },
     "prizes/power655/all.csv": {
       "bytes": 956386,
@@ -163,5 +163,5 @@
   "parser_version": "0.2.0",
   "repository_commit": "a6c89820a62907c1c9ecd1f4b3ab26964aedee2c",
   "schema_version": 1,
-  "snapshot_at": "2026-06-13T20:39:51+00:00"
+  "snapshot_at": "2026-06-13T20:39:53+00:00"
 }
