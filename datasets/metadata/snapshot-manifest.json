@@ -1,11 +1,11 @@
 {
   "dataset_rows": {
-    "draws": 343806,
-    "prizes": 37436
+    "draws": 344087,
+    "prizes": 37456
   },
   "date_range": {
     "first": "2016-07-20",
-    "last": "2026-02-07"
+    "last": "2026-02-08"
   },
   "files": {
     "draws/bingo18/2024-12.csv": {
@@ -79,9 +79,9 @@
       "sha256": "bbd66bc5f3e3a064dcafce50771ee3b46099a50e0df59d638020cb931bf9a07c"
     },
     "draws/bingo18/2026-02.csv": {
-      "bytes": 460260,
-      "data_rows": 1113,
-      "sha256": "ef7183adff50d08c756a14c0369d7fbf0a1c6a0cf8a0a9b7c871685a8bdad301"
+      "bytes": 525985,
+      "data_rows": 1272,
+      "sha256": "05588506eb4d90912ac9cad7ac0b48eb0589ec9f05e77c4f99ff514874bf0963"
     },
     "draws/keno/2019-08.csv": {
       "bytes": 359449,
@@ -474,14 +474,14 @@
       "sha256": "ab930898bc80c7efa8a9f6d0e643fdf309a6637b4c29dbb4b602fd888e431845"
     },
     "draws/keno/2026-02.csv": {
-      "bytes": 408453,
-      "data_rows": 833,
-      "sha256": "e8f73da4b83ae08193c7101badff17c71c061585a955721782f871bc6724e36e"
+      "bytes": 466787,
+      "data_rows": 952,
+      "sha256": "64d3f45a6d034f78373a43789efcfa4b3254ce9aec9a312283349aa6141b93d5"
     },
     "draws/lotto535/all.csv": {
-      "bytes": 173559,
-      "data_rows": 448,
-      "sha256": "04dee8b5e8628de92907f33d512c994ba85d5421ce57614e3a2426c2c01e55c2"
+      "bytes": 174333,
+      "data_rows": 450,
+      "sha256": "f853a002bc1681173a50ce866ce7916df719d7ad955b2ec3d472fab5aec568e1"
     },
     "draws/max3d/all.csv": {
       "bytes": 873100,
@@ -499,9 +499,9 @@
       "sha256": "91532729b155381d907c9e19412b4dc5478db75c5194f5fd474e625592bc3de2"
     },
     "draws/mega645/all.csv": {
-      "bytes": 990954,
-      "data_rows": 1468,
-      "sha256": "f6d9d4eafab8046a69aa3f2d54d7467b643978526829b00f503a9f6c915dc3f6"
+      "bytes": 991656,
+      "data_rows": 1469,
+      "sha256": "f69c77f70f29f389e947cd079927db518dfa5a5cdbc82fe56b1ee6c32ecf719d"
     },
     "draws/power655/all.csv": {
       "bytes": 900925,
@@ -515,11 +515,11 @@
     },
     "metadata/dataset-summary.json": {
       "bytes": 2142,
-      "sha256": "42b5eb59f75ad7488713283a59d8c0365d30474c3881efe300596188ad4de42f"
+      "sha256": "778a8645184485893c6c54f7b7f6a132ecd73a9bf538ae4354184a0bdd239501"
     },
     "metadata/quality-report.json": {
       "bytes": 2077,
-      "sha256": "4490627fdaab2bd4c610cc509cbc4701573c4dbf4d9dae9fcd5be1ccfe2f97e0"
+      "sha256": "2320147048c8fcd55657a9706b9100e4ab38451c4848691b9c372e5882f320bf"
     },
     "metadata/retrospective-reconstruction.json": {
       "bytes": 1046,
@@ -530,9 +530,9 @@
       "sha256": "75233d5dc234723fd4ccc9f01e272f5680c1d8a33dd7ae1431854f58c5453d7d"
     },
     "prizes/lotto535/all.csv": {
-      "bytes": 1228107,
-      "data_rows": 3584,
-      "sha256": "63a63835da28693cc3e5af6b6e4f635cd66dc16e1f4cb5b01c429d9b36b3c403"
+      "bytes": 1233586,
+      "data_rows": 3600,
+      "sha256": "3a82c0b618660658e3a7f7a0afe5076bf705db5ac854ccb308d244efd8d4fd15"
     },
     "prizes/max3d/all.csv": {
       "bytes": 5462800,
@@ -550,9 +550,9 @@
       "sha256": "1b4d0f81b7ffcf57a3789fde84f8bafab266966a2a3bba937020a8d4d8081241"
     },
     "prizes/mega645/all.csv": {
-      "bytes": 2166921,
-      "data_rows": 5872,
-      "sha256": "f633ceba67b4b82bf85f75c86f3426519999ca7e88fa7088cf4d3d4f47d6a0de"
+      "bytes": 2168398,
+      "data_rows": 5876,
+      "sha256": "7832b3b302f9204712ce2591de5770fa7c8469c5c4f54d2c68390cbffd5478a0"
     },
     "prizes/power655/all.csv": {
       "bytes": 2443559,
