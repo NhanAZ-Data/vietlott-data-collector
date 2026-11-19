@@ -1,13 +1,13 @@
-# Snapshot Vietlott tái dựng hồi cứu
+# Retrospective Vietlott snapshots
 
-Nhánh này chứa các snapshot hằng ngày được tái dựng hồi cứu, không phải bản sao lịch sử
-cho biết dữ liệu đã được biết vào từng ngày. Tag `reconstructed-YYYY-MM-DD` gồm các dòng
-hiện có với `draw_date` không muộn hơn ngày trong tag.
+This branch contains retrospectively reconstructed daily snapshots. They are not
+historical copies of the data known on each date. Each `reconstructed-YYYY-MM-DD` tag
+includes currently available records with a `draw_date` on or before the tag date.
 
-Ngày trong tag là mốc lọc theo ngày quay. Bản ghi giữ nguyên `fetched_at` và provenance
-hiện có. Nguồn này không cho biết thời điểm dữ liệu được công bố lần đầu, các sửa đổi về
-sau hoặc lúc collector biết đến bản ghi.
+The tag date filters records by draw date. Records retain their current `fetched_at`
+values and provenance. This archive does not show when data was first published, later
+changes, or when the collector first observed a record.
 
 [`snapshot-index.json`](https://github.com/NhanAZ-Data/vietlott-data-collector/blob/reconstructed-datasets/snapshot-index.json)
-liệt kê các tag hằng ngày và liên kết tải archive. Snapshot hằng ngày được ghi nhận tại
-thời điểm phát hành riêng bằng tag `data-YYYY-MM-DD`, bắt đầu từ 2026-06-14.
+lists the daily tags and archive download links. Snapshots recorded at publication time
+are available separately under `data-YYYY-MM-DD` tags, beginning on 2026-06-14.
