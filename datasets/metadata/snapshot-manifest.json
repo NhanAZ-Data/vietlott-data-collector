@@ -1,11 +1,11 @@
 {
   "dataset_rows": {
-    "draws": 74877,
-    "prizes": 15236
+    "draws": 74973,
+    "prizes": 15247
   },
   "date_range": {
     "first": "2016-07-20",
-    "last": "2021-10-31"
+    "last": "2021-11-01"
   },
   "files": {
     "draws/keno/2019-08.csv": {
@@ -143,10 +143,15 @@
       "data_rows": 2945,
       "sha256": "7b2c581c4a46591b65224227f9cf002d31bca010e792c832e786c4a8d22c3ae9"
     },
+    "draws/keno/2021-11.csv": {
+      "bytes": 40082,
+      "data_rows": 95,
+      "sha256": "24f8d3b596fe3205abdced82c505f8fa33a7c39d0838222e7851b09dc5cdbfb2"
+    },
     "draws/max3d/all.csv": {
-      "bytes": 313651,
-      "data_rows": 374,
-      "sha256": "065104962d9560bfa7781b987f1edb95383d50f78ddeb127f8066a8dbbde3e14"
+      "bytes": 314492,
+      "data_rows": 375,
+      "sha256": "e537f59daa81b7788600e108f0d350a959d23549d2ade805e060c2c8baede6d5"
     },
     "draws/max3dpro/all.csv": {
       "bytes": 18143,
@@ -175,11 +180,11 @@
     },
     "metadata/dataset-summary.json": {
       "bytes": 1683,
-      "sha256": "55db31a856f81eaf63bc887f968efd023dfe69235055f10f1199f6662b98a46b"
+      "sha256": "983d8824acb5d05a25bfbc766d10b6e39eae61322b20e4c553e59620471222a4"
     },
     "metadata/quality-report.json": {
       "bytes": 1788,
-      "sha256": "34d36bbc3295dfec116680bc9b5e4baf4534988be22aba7f24b547cb6e88ca21"
+      "sha256": "6d3c72b6da5efa6098dedcdac9d5920c56c74db9455a30fc1d9adc9cc1cd75f6"
     },
     "metadata/retrospective-reconstruction.json": {
       "bytes": 1046,
@@ -190,9 +195,9 @@
       "sha256": "75233d5dc234723fd4ccc9f01e272f5680c1d8a33dd7ae1431854f58c5453d7d"
     },
     "prizes/max3d/all.csv": {
-      "bytes": 1966886,
-      "data_rows": 4114,
-      "sha256": "c266d48024bba770eaf4a53ff5ccc4bff9bd51783a622b235d2e636998de546a"
+      "bytes": 1972146,
+      "data_rows": 4125,
+      "sha256": "3c31f0f5ae0bf5598a8dc40360450c9c4709ba02d631a3bc5e40bc31b4eccbcc"
     },
     "prizes/max3dpro/all.csv": {
       "bytes": 85601,
@@ -223,5 +228,5 @@
   "parser_version": "0.2.0",
   "repository_commit": "a6c89820a62907c1c9ecd1f4b3ab26964aedee2c",
   "schema_version": 1,
-  "snapshot_at": "2026-06-13T20:50:39+00:00"
+  "snapshot_at": "2026-06-13T20:50:41+00:00"
 }
