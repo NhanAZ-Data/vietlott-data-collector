@@ -1,11 +1,11 @@
 {
   "dataset_rows": {
-    "draws": 100116,
-    "prizes": 18344
+    "draws": 100213,
+    "prizes": 18359
   },
   "date_range": {
     "first": "2016-07-20",
-    "last": "2022-07-19"
+    "last": "2022-07-20"
   },
   "files": {
     "draws/keno/2019-08.csv": {
@@ -184,14 +184,14 @@
       "sha256": "8d3e8cae622e0bafd5a8d91abb6f78239e7e6cb63042ea2f552566b9a493b329"
     },
     "draws/keno/2022-07.csv": {
-      "bytes": 757809,
-      "data_rows": 1805,
-      "sha256": "b4cf27a996b54771d261d9f07c28429ca1e5c98902e55ae2ee5aabf94eefcbf2"
+      "bytes": 797715,
+      "data_rows": 1900,
+      "sha256": "735ad8e52896f7549e0e08259e8aed1401f3f8282cea474d739b2a402d0c742c"
     },
     "draws/max3d/all.csv": {
-      "bytes": 407002,
-      "data_rows": 485,
-      "sha256": "e91e63f40a808d619048ef2595ca1fe4dda5e8d815009197d4ead99c4210249f"
+      "bytes": 407843,
+      "data_rows": 486,
+      "sha256": "77d17cc61b14a014cbd8ff690470ad0ac63246f4e03d89dc795c68a3419aa2af"
     },
     "draws/max3dpro/all.csv": {
       "bytes": 113159,
@@ -204,9 +204,9 @@
       "sha256": "91532729b155381d907c9e19412b4dc5478db75c5194f5fd474e625592bc3de2"
     },
     "draws/mega645/all.csv": {
-      "bytes": 604012,
-      "data_rows": 915,
-      "sha256": "7eb1f7e30add8b5561fd7a1132a52b0133580905698f4d22ea1d97138b9f1e06"
+      "bytes": 604713,
+      "data_rows": 916,
+      "sha256": "5ecbf3246951f7291a142b32edec1c6f7e9fdd7b1ead3a8844a9b3a3c104256a"
     },
     "draws/power655/all.csv": {
       "bytes": 509106,
@@ -220,11 +220,11 @@
     },
     "metadata/dataset-summary.json": {
       "bytes": 1687,
-      "sha256": "ec9b67ce1bdaef2be1efc18c65415f41c42d32bf1f3b1eea8f283a1667060500"
+      "sha256": "7b2b317f947dd0606154f3b567745bf4d2f5d2d4d7844349109d426e41ecb2ec"
     },
     "metadata/quality-report.json": {
       "bytes": 1792,
-      "sha256": "4f874195af6f5f538cac30561ba10a7533edb03b954c946204f007b27814e2c1"
+      "sha256": "53393bbbb3406d10810c3970b6e4e4142c33a3833c0809332410885dbbb64a26"
     },
     "metadata/retrospective-reconstruction.json": {
       "bytes": 1046,
@@ -235,9 +235,9 @@
       "sha256": "75233d5dc234723fd4ccc9f01e272f5680c1d8a33dd7ae1431854f58c5453d7d"
     },
     "prizes/max3d/all.csv": {
-      "bytes": 2550534,
-      "data_rows": 5335,
-      "sha256": "576ae1d68cc36bd920b9093d1682d91645ee7354f8a4a9014c915ce3a53d8de7"
+      "bytes": 2555792,
+      "data_rows": 5346,
+      "sha256": "92014793f1fed2c561c9017b38d493a6e120360c26e4fde8f6f782664a81789e"
     },
     "prizes/max3dpro/all.csv": {
       "bytes": 537437,
@@ -250,9 +250,9 @@
       "sha256": "1b4d0f81b7ffcf57a3789fde84f8bafab266966a2a3bba937020a8d4d8081241"
     },
     "prizes/mega645/all.csv": {
-      "bytes": 1350500,
-      "data_rows": 3660,
-      "sha256": "1ce27885d1222624fd65d02d717e161ba38e16128492b3af9211dd8559ee1ceb"
+      "bytes": 1351977,
+      "data_rows": 3664,
+      "sha256": "8c488d58e0d77eb4c8d24f40a80f181034d330704032f6449643f65a7a5e9c41"
     },
     "prizes/power655/all.csv": {
       "bytes": 1405691,
@@ -268,5 +268,5 @@
   "parser_version": "0.2.0",
   "repository_commit": "a6c89820a62907c1c9ecd1f4b3ab26964aedee2c",
   "schema_version": 1,
-  "snapshot_at": "2026-06-13T20:59:32+00:00"
+  "snapshot_at": "2026-06-13T20:59:34+00:00"
 }
