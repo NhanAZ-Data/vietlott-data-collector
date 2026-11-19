@@ -1,11 +1,11 @@
 {
   "dataset_rows": {
-    "draws": 69272,
-    "prizes": 14579
+    "draws": 69368,
+    "prizes": 14584
   },
   "date_range": {
     "first": "2016-07-20",
-    "last": "2021-09-03"
+    "last": "2021-09-04"
   },
   "files": {
     "draws/keno/2019-08.csv": {
@@ -134,9 +134,9 @@
       "sha256": "608102d798f023c4810c910e481d8598a33a9b9976ead6374e239b53525f4e7b"
     },
     "draws/keno/2021-09.csv": {
-      "bytes": 119622,
-      "data_rows": 285,
-      "sha256": "328b821dc36b92aca781e278bde76f8b670753b823b172986c1253dff793ede1"
+      "bytes": 159435,
+      "data_rows": 380,
+      "sha256": "306793f6590cf43d971554b292cdd89dc8fff8067c3adac45b00366102db0c21"
     },
     "draws/max3d/all.csv": {
       "bytes": 293467,
@@ -154,9 +154,9 @@
       "sha256": "44177d5902adc3009abebde2abe7da3fef23410e7b7d1a09c2e1d71aafb2390a"
     },
     "draws/power655/all.csv": {
-      "bytes": 412517,
-      "data_rows": 615,
-      "sha256": "8e84327bc160c8f6380efcaa7741f39e5c31c6568e1f0cf40eb3dc020df58e45"
+      "bytes": 413228,
+      "data_rows": 616,
+      "sha256": "647dff312d549eb5caf8dbe2e2aa1c01efc06d343a76b8d3d1b541adf6506335"
     },
     "exclusions.csv": {
       "bytes": 61,
@@ -165,11 +165,11 @@
     },
     "metadata/dataset-summary.json": {
       "bytes": 1465,
-      "sha256": "eb2dc5e8600a12ab07267e3ef1796179dff1d9f8f9ccd4603bdf4d7224fb1d31"
+      "sha256": "607dc1617e0fbb48a0549e75fb326db0dc88e3b50230330bb2ea73100a7bdb38"
     },
     "metadata/quality-report.json": {
       "bytes": 1649,
-      "sha256": "f359fee906c8771741c3a887c84e2f60fc40c43a67aac59ab29a311f125b1539"
+      "sha256": "32d6e3c88fbb06d74fac802406ce67f314b3c9c3fa82fd2c3203a3f3c65531e3"
     },
     "metadata/retrospective-reconstruction.json": {
       "bytes": 1046,
@@ -195,9 +195,9 @@
       "sha256": "c87b2a5b6be2e7db44f961d0718747697646d49b397e5b797d5b866b9340f1bc"
     },
     "prizes/power655/all.csv": {
-      "bytes": 1150982,
-      "data_rows": 3075,
-      "sha256": "468487342e4a0d0b4d254ba73a7aa36995201973d76d3562a7b34975a113e619"
+      "bytes": 1152850,
+      "data_rows": 3080,
+      "sha256": "dc74c956ee9d25cc9dadeb7f9e089e833ec4f7b8f75137b2b27d1eac1620f12c"
     }
   },
   "methodology_versions": {
@@ -208,5 +208,5 @@
   "parser_version": "0.2.0",
   "repository_commit": "a6c89820a62907c1c9ecd1f4b3ab26964aedee2c",
   "schema_version": 1,
-  "snapshot_at": "2026-06-13T20:48:42+00:00"
+  "snapshot_at": "2026-06-13T20:48:43+00:00"
 }
