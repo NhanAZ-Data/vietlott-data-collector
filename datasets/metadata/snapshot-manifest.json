@@ -1,17 +1,17 @@
 {
   "dataset_rows": {
-    "draws": 437,
-    "prizes": 1968
+    "draws": 439,
+    "prizes": 1978
   },
   "date_range": {
     "first": "2016-07-20",
-    "last": "2017-12-08"
+    "last": "2017-12-09"
   },
   "files": {
     "draws/max4d/all.csv": {
-      "bytes": 111687,
-      "data_rows": 164,
-      "sha256": "687d146fdbabbeac8d6578559e95f198a3d9dafe7426f45d1f7e7908a17afab1"
+      "bytes": 112367,
+      "data_rows": 165,
+      "sha256": "600507fbd73770d5d8f56a53a4f58b370f0c2d72838385a60b1a406225e94582"
     },
     "draws/mega645/all.csv": {
       "bytes": 133349,
@@ -19,9 +19,9 @@
       "sha256": "e044f633933d562c0ef25106dfc96fb53d34828c398fbcf22dfd9dd80df32cc4"
     },
     "draws/power655/all.csv": {
-      "bytes": 34947,
-      "data_rows": 56,
-      "sha256": "40bf9b8db25fa91c760f7389cceb36d6e4e371d430c006a98d65f4ae1a67b147"
+      "bytes": 35569,
+      "data_rows": 57,
+      "sha256": "1eb2c2c4956d222f42541014cebc96d675aa791314f256736a6339d83e52a3b8"
     },
     "exclusions.csv": {
       "bytes": 61,
@@ -30,11 +30,11 @@
     },
     "metadata/dataset-summary.json": {
       "bytes": 1017,
-      "sha256": "fdab7f75a778c07f3b036d5bf9e880d347244e689dc60892a8f33387fc8eadc3"
+      "sha256": "4ce67484993ebd0f995a1a85a105c8e45364d87b6296a4ebe462cd634f29ca1d"
     },
     "metadata/quality-report.json": {
       "bytes": 1365,
-      "sha256": "7e65365f43a4bf70e333bfe2dffe381d18795734becc1917e87f7b1b72245161"
+      "sha256": "6f51884b3aeaeab8872ebcbd47c27d6c19238fd298531cf667d66b28d06c803b"
     },
     "metadata/retrospective-reconstruction.json": {
       "bytes": 1046,
@@ -45,9 +45,9 @@
       "sha256": "75233d5dc234723fd4ccc9f01e272f5680c1d8a33dd7ae1431854f58c5453d7d"
     },
     "prizes/max4d/all.csv": {
-      "bytes": 320830,
-      "data_rows": 820,
-      "sha256": "571d4170d8ba4acc2d650f3d0cd9db40bbf10ded1c63f79357e7af05835db2ab"
+      "bytes": 322782,
+      "data_rows": 825,
+      "sha256": "93a9f3848eefb3ed8167e4db5fa4a4950b5a6b4ac663c0f088dcc16ece4de427"
     },
     "prizes/mega645/all.csv": {
       "bytes": 320598,
@@ -55,9 +55,9 @@
       "sha256": "df612767506a43495666822a54a1a6e7da45c25091b4300f90bc777ea47b0b28"
     },
     "prizes/power655/all.csv": {
-      "bytes": 104817,
-      "data_rows": 280,
-      "sha256": "1802bdf7abf3e7b095a08a981bb197c977c6f5bc66ecdd7f5250a0f5f9471cbc"
+      "bytes": 106691,
+      "data_rows": 285,
+      "sha256": "1dd6e09ed4e3908ae6a26bcded8cef67be9697dd2bbcd0a3937a19863806779f"
     }
   },
   "methodology_versions": {
