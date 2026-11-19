@@ -1,0 +1,38 @@
+{
+  "generated_from_dataset_at": "2026-11-18T15:32:49+00:00",
+  "grain": "one canonical row per (product, draw_id)",
+  "limitations": [
+    "This report verifies reconstructed row counts, not historical knowledge-time quality.",
+    "Per-row validation_status, draw_status, fetched_at and provenance are retained."
+  ],
+  "products": {
+    "max4d": {
+      "draw_rows": 19,
+      "first_date": "2016-11-19",
+      "last_date": "2016-12-31",
+      "prize_rows": 95
+    },
+    "mega645": {
+      "draw_rows": 72,
+      "first_date": "2016-07-20",
+      "last_date": "2017-01-01",
+      "prize_rows": 288
+    }
+  },
+  "reconstruction": {
+    "full_aggregate_audit_recomputed": false,
+    "method": "Filter the validated source snapshot by draw_date and effective_date.",
+    "source_quality_report_sha256": "805f992e9bde3d396a77aac5818804ec3df2e2f05acbb5756d662072319033a3",
+    "source_snapshot_commit": "a6c89820a62907c1c9ecd1f4b3ab26964aedee2c",
+    "source_snapshot_tag": "data-2026-11-18"
+  },
+  "report_version": "retrospective-reconstruction-v1",
+  "schema_version": 1,
+  "totals": {
+    "draw_rows": 91,
+    "draws_with_prizes": 91,
+    "duplicate_draw_keys": 0,
+    "prize_rows": 383,
+    "result_rows": 91
+  }
+}

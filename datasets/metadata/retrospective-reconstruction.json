@@ -1,0 +1,19 @@
+{
+  "cutoff_rule": "Include the latest canonical draw rows with draw_date <= the date in the tag.",
+  "exclusion_rule": "Include exclusions whose effective_date is on or before the tag date.",
+  "generated_at_utc": "2026-11-19T16:16:01+00:00",
+  "historical_as_known": false,
+  "limitations": [
+    "This is a retrospective reconstruction, not a record of what was known on the tag date.",
+    "Rows retain current values and may include later corrections or discoveries.",
+    "The current prize rules are reused because dated historical rule versions are unavailable.",
+    "Original fetched_at and provenance fields are preserved and may postdate the tag."
+  ],
+  "prize_rule": "Include prize rows belonging to included (product, draw_id) pairs.",
+  "schema_version": 1,
+  "snapshot_kind": "retrospective_reconstruction",
+  "source_dataset_updated_at": "2026-11-18T15:32:49+00:00",
+  "source_snapshot_commit": "a6c89820a62907c1c9ecd1f4b3ab26964aedee2c",
+  "source_snapshot_tag": "data-2026-11-18",
+  "tag_prefix": "reconstructed-YYYY-MM-DD"
+}

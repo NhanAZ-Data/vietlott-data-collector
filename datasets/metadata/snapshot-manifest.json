@@ -1,0 +1,62 @@
+{
+  "dataset_rows": {
+    "draws": 91,
+    "prizes": 383
+  },
+  "date_range": {
+    "first": "2016-07-20",
+    "last": "2017-01-01"
+  },
+  "files": {
+    "draws/max4d/all.csv": {
+      "bytes": 13087,
+      "data_rows": 19,
+      "sha256": "f7be1cd94cad7f777b56843813f8e5557737197a95ee7f5a95c5520f4c58d02c"
+    },
+    "draws/mega645/all.csv": {
+      "bytes": 44364,
+      "data_rows": 72,
+      "sha256": "f744bc00acf834665fc5f883fe0594ab5d8063e93db4128380ce97e989184443"
+    },
+    "exclusions.csv": {
+      "bytes": 61,
+      "data_rows": 0,
+      "sha256": "f810d218086ee5a33ec1c08808e351891bb7a703757efea9c5c8ff4cf698f260"
+    },
+    "metadata/dataset-summary.json": {
+      "bytes": 792,
+      "sha256": "9792599bcf7c098b7d818518633ce0a68c99170622411888a5a0c559b7677b1d"
+    },
+    "metadata/quality-report.json": {
+      "bytes": 1219,
+      "sha256": "16704c0708c4decc12ae70438eb8452c2ff66cb57ac82683d429b77823e7c485"
+    },
+    "metadata/retrospective-reconstruction.json": {
+      "bytes": 1046,
+      "sha256": "223f7ad0a1c9274eb2feb3201e44b663fe299320f8b93f3e43ee885bc49e018d"
+    },
+    "prize_rules.csv": {
+      "bytes": 89189,
+      "sha256": "75233d5dc234723fd4ccc9f01e272f5680c1d8a33dd7ae1431854f58c5453d7d"
+    },
+    "prizes/max4d/all.csv": {
+      "bytes": 37390,
+      "data_rows": 95,
+      "sha256": "11e2e79f1a19a6aa7ac580c073adbb61d700bf595a5c46c3579991c9ebf63edb"
+    },
+    "prizes/mega645/all.csv": {
+      "bytes": 106386,
+      "data_rows": 288,
+      "sha256": "3a8d5828112d736f829513afc4c55f61b1077ffb4122d8cfd7da3869599fb383"
+    }
+  },
+  "methodology_versions": {
+    "collector": "0.2.0",
+    "data_quality": "1.0.0",
+    "repository_snapshot": "1.0.0"
+  },
+  "parser_version": "0.2.0",
+  "repository_commit": "a6c89820a62907c1c9ecd1f4b3ab26964aedee2c",
+  "schema_version": 1,
+  "snapshot_at": "2026-06-13T19:26:50+00:00"
+}

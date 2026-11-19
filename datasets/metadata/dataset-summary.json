@@ -1,0 +1,33 @@
+{
+  "confirmed_rows": 91,
+  "dataset_updated_at": "2026-06-13T19:26:50+00:00",
+  "draw_rows": 91,
+  "not_confirmed_rows": 0,
+  "prize_rows": 383,
+  "products": {
+    "max4d": {
+      "confirmed_rows": 19,
+      "first_date": "2016-11-19",
+      "last_date": "2016-12-31",
+      "max_id": "00019",
+      "min_id": "00001",
+      "not_confirmed_rows": 0,
+      "rows": 19
+    },
+    "mega645": {
+      "confirmed_rows": 72,
+      "first_date": "2016-07-20",
+      "last_date": "2017-01-01",
+      "max_id": "00072",
+      "min_id": "00001",
+      "not_confirmed_rows": 0,
+      "rows": 72
+    }
+  },
+  "schema_version": 1,
+  "storage_layout": {
+    "high_frequency": "draws/<product>/YYYY-MM.csv",
+    "other_products": "draws/<product>/all.csv",
+    "prizes": "prizes/<product>/all.csv"
+  }
+}
