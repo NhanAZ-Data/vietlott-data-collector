@@ -9,13 +9,13 @@ def test_collector_documentation_exists() -> None:
     required = [
         ROOT / "README.md",
         ROOT / "docs" / "DATA_DICTIONARY.md",
-        ROOT / "docs" / "THU_THAP_DU_LIEU.md",
-        ROOT / "docs" / "CHAT_LUONG_DU_LIEU.md",
-        ROOT / "docs" / "TU_DONG_CAP_NHAT.md",
+        ROOT / "docs" / "DATA_COLLECTION.md",
+        ROOT / "docs" / "DATA_QUALITY.md",
+        ROOT / "docs" / "AUTOMATED_UPDATES.md",
         ROOT / "docs" / "ARCHITECTURE.md",
         ROOT / "docs" / "SOURCE_SURVEY.md",
-        ROOT / ".github" / "ISSUE_TEMPLATE" / "loi-du-lieu.yml",
-        ROOT / ".github" / "ISSUE_TEMPLATE" / "loi-nguon.yml",
+        ROOT / ".github" / "ISSUE_TEMPLATE" / "data-issue.yml",
+        ROOT / ".github" / "ISSUE_TEMPLATE" / "source-issue.yml",
     ]
 
     for path in required:

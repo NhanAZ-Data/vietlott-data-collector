@@ -1,23 +1,23 @@
-name: Quy trình cập nhật dataset dùng chung
+name: Shared dataset update
 
 on:
   workflow_call:
     inputs:
       products:
-        description: Danh sách sản phẩm, cách nhau bằng khoảng trắng
+        description: Space-separated product slugs
         required: true
         type: string
       report_name:
-        description: Tên ngắn dùng cho artifact
+        description: Short name used for the artifact
         required: true
         type: string
       publish_release:
-        description: Phát hành snapshot đã kiểm tra sau khi cập nhật
+        description: Publish the validated snapshot after updating
         required: false
         default: false
         type: boolean
       snapshot_date:
-        description: Ngày snapshot theo giờ Việt Nam, để trống dùng ngày hôm qua
+        description: Snapshot date in ICT (UTC+7). Defaults to yesterday when blank.
         required: false
         default: ""
         type: string
@@ -30,7 +30,7 @@ concurrency:
 
 jobs:
   update:
-    name: Cập nhật và kiểm tra dữ liệu
+    name: Update and validate dataset
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
@@ -41,14 +41,14 @@ jobs:
       PYTHONUNBUFFERED: "1"
       PIP_DISABLE_PIP_VERSION_CHECK: "1"
     steps:
-      - name: Lấy mã nguồn
+      - name: Check out source
         uses: actions/checkout@v6
         with:
           ref: main
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Lấy nhánh dữ liệu
+      - name: Check out data branch
         uses: actions/checkout@v6
         with:
           ref: datasets
@@ -56,16 +56,16 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Cài Python
+      - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
 
-      - name: Cài chương trình
+      - name: Install package
         run: python -m pip install -e .
 
-      - name: Lưu báo cáo trước cập nhật
+      - name: Save pre-update reports
         shell: bash
         run: |
           before_dir="$RUNNER_TEMP/vietlott-reports/before"
@@ -79,10 +79,10 @@ jobs:
             fi
           done
 
-      - name: Khôi phục kho làm việc
+      - name: Restore working dataset
         run: vietlott-repository-data hydrate --source-dir dataset-branch/datasets --destination-dir data
 
-      - name: Đọc kỳ mới từ nguồn ưu tiên
+      - name: Collect new draws from primary sources
         id: update
         continue-on-error: true
         shell: bash
@@ -99,7 +99,7 @@ jobs:
             --retries 5 \
             --strict
 
-      - name: Đóng gói và kiểm tra dataset
+      - name: Package and validate dataset
         shell: bash
         run: |
           report_dir="$RUNNER_TEMP/vietlott-reports"
@@ -112,7 +112,7 @@ jobs:
             --destination-dir dataset-branch/datasets \
             > "$report_dir/publish-report.json"
 
-      - name: Đồng bộ nhánh dữ liệu trước khi kiểm tra
+      - name: Sync data branch before validation
         shell: bash
         run: |
           git -C dataset-branch add -A datasets
@@ -128,7 +128,7 @@ jobs:
             git -C dataset-branch apply --3way "$patch_file"
           fi
 
-      - name: Kiểm tra snapshot sau đồng bộ
+      - name: Validate snapshot after sync
         shell: bash
         run: |
           report_dir="$RUNNER_TEMP/vietlott-reports"
@@ -150,7 +150,7 @@ jobs:
             --output "$report_dir/quality-regressions.json" \
             >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Ghi tóm tắt lần cập nhật
+      - name: Write update summary
         if: always()
         continue-on-error: true
         shell: bash
@@ -160,7 +160,7 @@ jobs:
           --validation-report "$RUNNER_TEMP/vietlott-reports/validation-report.json"
           --output "$GITHUB_STEP_SUMMARY"
 
-      - name: Lưu tóm tắt thu thập
+      - name: Upload collection reports
         if: always()
         continue-on-error: true
         uses: actions/upload-artifact@v7
@@ -170,7 +170,7 @@ jobs:
           if-no-files-found: ignore
           retention-days: 14
 
-      - name: Commit khi dữ liệu thay đổi
+      - name: Commit data changes
         id: commit
         shell: bash
         env:
@@ -178,18 +178,18 @@ jobs:
         run: |
           git -C dataset-branch add -A datasets
           if git -C dataset-branch diff --cached --quiet; then
-            echo "Không có kỳ mới hoặc thay đổi chính thức"
+            echo "No new draws or official changes"
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git -C dataset-branch config user.name "github-actions[bot]"
           git -C dataset-branch config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git -C dataset-branch commit -m "data: cập nhật kết quả Vietlott"
+          git -C dataset-branch commit -m "data: update Vietlott results"
           gh auth setup-git
           git -C dataset-branch push origin HEAD:datasets
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
-      - name: Phát hành snapshot theo ngày
+      - name: Publish daily snapshot
         if: ${{ inputs.publish_release && steps.update.outcome == 'success' && steps.commit.outcome == 'success' }}
         env:
           GH_TOKEN: ${{ github.token }}
@@ -202,6 +202,6 @@ jobs:
           --snapshot-date "$SNAPSHOT_DATE"
           --source-commit "$GITHUB_SHA"
 
-      - name: Báo lỗi nguồn sau khi bảo toàn dữ liệu hợp lệ
+      - name: Report source failure after preserving valid data
         if: steps.update.outcome == 'failure'
         run: exit 1

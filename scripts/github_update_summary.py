@@ -10,33 +10,33 @@ def render_summary(
     update_report: dict[str, Any] | None,
     validation_report: dict[str, Any] | None,
 ) -> str:
-    lines = ["## Kết quả cập nhật Vietlott", ""]
+    lines = ["## Vietlott update results", ""]
     if update_report is None:
         lines.extend(
             [
-                "Không tìm thấy báo cáo cập nhật. Hãy xem log của bước thu thập.",
+                "No update report found. Check the collection step logs.",
                 "",
             ]
         )
     else:
-        products = ", ".join(update_report.get("products", [])) or "không xác định"
+        products = ", ".join(update_report.get("products", [])) or "unknown"
         fallbacks = sorted(update_report.get("secondary_fallback", {}))
         lines.extend(
             [
-                "| Chỉ số | Giá trị |",
+                "| Metric | Value |",
                 "| --- | ---: |",
-                f"| Sản phẩm | {products} |",
-                f"| Kỳ mới | {int(update_report.get('new_draw_rows', 0)):,} |",
-                f"| Dòng giải thưởng mới | {int(update_report.get('new_prize_rows', 0)):,} |",
-                f"| Tổng kỳ sau cập nhật | {int(update_report.get('draw_rows_after', 0)):,} |",
-                f"| Lỗi nguồn chưa xử lý | {int(update_report.get('source_errors', 0)):,} |",
+                f"| Products | {products} |",
+                f"| New draws | {int(update_report.get('new_draw_rows', 0)):,} |",
+                f"| New prize rows | {int(update_report.get('new_prize_rows', 0)):,} |",
+                f"| Total draws after update | {int(update_report.get('draw_rows_after', 0)):,} |",
+                f"| Unresolved source errors | {int(update_report.get('source_errors', 0)):,} |",
                 (
-                    "| Lỗi truy cập nguồn chính thức | "
+                    "| Official-source access errors | "
                     f"{int(update_report.get('official_source_errors', 0)):,} |"
                 ),
                 "",
-                "Nguồn dự phòng đã dùng "
-                + (", ".join(fallbacks) if fallbacks else "không có"),
+                "Fallback sources used: "
+                + (", ".join(fallbacks) if fallbacks else "none"),
                 "",
             ]
         )
@@ -44,7 +44,7 @@ def render_summary(
     if validation_report is None:
         lines.extend(
             [
-                "Không tìm thấy báo cáo kiểm tra dataset.",
+                "No dataset validation report found.",
                 "",
             ]
         )
@@ -53,11 +53,11 @@ def render_summary(
         errors = validation_report.get("errors", [])
         lines.extend(
             [
-                f"Kiểm tra dataset {'đạt' if valid else 'không đạt'}.",
+                f"Dataset validation: {'passed' if valid else 'failed'}.",
                 "",
-                f"- Số kỳ {int(validation_report.get('draw_rows', 0)):,}",
-                f"- Số dòng giải thưởng {int(validation_report.get('prize_rows', 0)):,}",
-                f"- Số lỗi {len(errors)}",
+                f"- Draw rows: {int(validation_report.get('draw_rows', 0)):,}",
+                f"- Prize rows: {int(validation_report.get('prize_rows', 0)):,}",
+                f"- Errors: {len(errors)}",
                 "",
             ]
         )
@@ -77,7 +77,9 @@ def _read_json(path: Path) -> dict[str, Any] | None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="Build an English GitHub Actions update summary"
+    )
     parser.add_argument("--update-report", type=Path, required=True)
     parser.add_argument("--validation-report", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
