@@ -1,11 +1,11 @@
 {
   "dataset_rows": {
-    "draws": 29811,
-    "prizes": 9982
+    "draws": 29907,
+    "prizes": 9993
   },
   "date_range": {
     "first": "2016-07-20",
-    "last": "2020-07-05"
+    "last": "2020-07-06"
   },
   "files": {
     "draws/keno/2019-08.csv": {
@@ -64,14 +64,14 @@
       "sha256": "e0dc5184f723265c2faee57601c37b03ab15c032707d33a880edb978f76d7d5e"
     },
     "draws/keno/2020-07.csv": {
-      "bytes": 199285,
-      "data_rows": 475,
-      "sha256": "79c34339cb1402ee3e12aa91403ae43f8ef4500ad3610fc7dc7b2e86dfb48a0f"
+      "bytes": 239095,
+      "data_rows": 570,
+      "sha256": "ee6619c2be61f8ce385db64c6abf37d0c59aa08a55a7633581a3e2ad6bc92df1"
     },
     "draws/max3d/all.csv": {
-      "bytes": 148815,
-      "data_rows": 178,
-      "sha256": "15785feffea26e62b349a16b14d1984b5053eb0b40e16978df25973b4499ce77"
+      "bytes": 149656,
+      "data_rows": 179,
+      "sha256": "3c6e2ae512e9de7582269fa3534edc9a7e115270a68fbaff518480cfd9c3272e"
     },
     "draws/max4d/all.csv": {
       "bytes": 392214,
@@ -95,11 +95,11 @@
     },
     "metadata/dataset-summary.json": {
       "bytes": 1464,
-      "sha256": "77a3f145d9e3390a6a32bffc965864a847f3f2a852c32eab5a614041e116e40c"
+      "sha256": "99d44b0ac17caec8adff9c2eb828a338919be1d2b11ab4089fa6ebc3c2dc237a"
     },
     "metadata/quality-report.json": {
       "bytes": 1648,
-      "sha256": "555575c54df5fddc49bc854a7b6fc770f62416a9f17588eb18efda5a6d964156"
+      "sha256": "d7d8a86347b372efe1f42b99e3eec4f0a63e33adffd4a03c3ccb533a7864497e"
     },
     "metadata/retrospective-reconstruction.json": {
       "bytes": 1046,
@@ -110,9 +110,9 @@
       "sha256": "75233d5dc234723fd4ccc9f01e272f5680c1d8a33dd7ae1431854f58c5453d7d"
     },
     "prizes/max3d/all.csv": {
-      "bytes": 936287,
-      "data_rows": 1958,
-      "sha256": "06f6f5e221d12dc9bda0c4c26c53402c0dd79fb31ee5f813d4d1484f4c9d7059"
+      "bytes": 941545,
+      "data_rows": 1969,
+      "sha256": "e0f0c62148137a41a464e07d28f5f306a67149fecf86b497140c914eb9457d52"
     },
     "prizes/max4d/all.csv": {
       "bytes": 1308629,
@@ -138,5 +138,5 @@
   "parser_version": "0.2.0",
   "repository_commit": "a6c89820a62907c1c9ecd1f4b3ab26964aedee2c",
   "schema_version": 1,
-  "snapshot_at": "2026-06-13T20:34:40+00:00"
+  "snapshot_at": "2026-06-13T20:34:41+00:00"
 }
