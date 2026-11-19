@@ -1,22 +1,22 @@
 {
   "dataset_rows": {
-    "draws": 1575,
-    "prizes": 6634
+    "draws": 1671,
+    "prizes": 6645
   },
   "date_range": {
     "first": "2016-07-20",
-    "last": "2019-08-25"
+    "last": "2019-08-26"
   },
   "files": {
     "draws/keno/2019-08.csv": {
-      "bytes": 119925,
-      "data_rows": 285,
-      "sha256": "c72fe072480b0674adee4c151bdbec836013d3205fc5def44a68958177dd14c1"
+      "bytes": 159834,
+      "data_rows": 380,
+      "sha256": "fea94110a6b87b469e5004f2835aa6a1aaaf9a5f86378fec99439560d9eb9daa"
     },
     "draws/max3d/all.csv": {
-      "bytes": 44594,
-      "data_rows": 54,
-      "sha256": "81bc2951478171a8ca42300ba511ddba682e76a8fa181808570fe475e651190f"
+      "bytes": 45426,
+      "data_rows": 55,
+      "sha256": "c15bb058ccc759ebfbc332489bf0afc07c13848681db397f09c457c73734c838"
     },
     "draws/max4d/all.csv": {
       "bytes": 296734,
@@ -40,11 +40,11 @@
     },
     "metadata/dataset-summary.json": {
       "bytes": 1456,
-      "sha256": "94fd2998100d79566b1ede0f92dcee301721eed868326195f38e6d91c846e14e"
+      "sha256": "b39f3b35963f3bdef044abb0191bae67abe06f7e44ecbc4146f1021484fce1ad"
     },
     "metadata/quality-report.json": {
       "bytes": 1642,
-      "sha256": "ce9441907d245bf2ecc4d8f2490d18e1cc4073bb34a6fbab7195ab2bed6f1158"
+      "sha256": "d96b35a1fa66f68a34c4a67ddce75d190a38ca6e00ef3fd4510e314b3a7e99a8"
     },
     "metadata/retrospective-reconstruction.json": {
       "bytes": 1046,
@@ -55,9 +55,9 @@
       "sha256": "75233d5dc234723fd4ccc9f01e272f5680c1d8a33dd7ae1431854f58c5453d7d"
     },
     "prizes/max3d/all.csv": {
-      "bytes": 284213,
-      "data_rows": 594,
-      "sha256": "f563c35ec91d981b02070b481e5b0224f7b8fd7e93dad41fb133d84c5238b9a9"
+      "bytes": 289473,
+      "data_rows": 605,
+      "sha256": "2179f9ca28a647cc67f0baddd5437ac2d80b447344e7a02d7ed2a56877280f79"
     },
     "prizes/max4d/all.csv": {
       "bytes": 971836,
@@ -83,5 +83,5 @@
   "parser_version": "0.2.0",
   "repository_commit": "a6c89820a62907c1c9ecd1f4b3ab26964aedee2c",
   "schema_version": 1,
-  "snapshot_at": "2026-06-13T20:24:26+00:00"
+  "snapshot_at": "2026-06-13T20:24:31+00:00"
 }
