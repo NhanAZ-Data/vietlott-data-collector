@@ -62,8 +62,10 @@ class GitTreeBuilder:
     def _set_entry(self, relative_path: str, object_id: str, *, is_tree: bool) -> None:
         parts = relative_path.split("/")
         node = self.root
+        ancestors = [node]
         for part in parts[:-1]:
             node = node.directories.setdefault(part, TreeNode())
+            ancestors.append(node)
         name = parts[-1]
         if is_tree:
             current = node.directories.get(name)
@@ -76,12 +78,9 @@ class GitTreeBuilder:
             node.files[name] = object_id
         node.dirty = True
         node.object_id = None
-        for depth in range(1, len(parts)):
-            parent = self.root
-            for part in parts[:depth]:
-                parent = parent.directories[part]
-            parent.dirty = True
-            parent.object_id = None
+        for ancestor in ancestors:
+            ancestor.dirty = True
+            ancestor.object_id = None
 
     def build(self, git: Git) -> str:
         return self._build_node(self.root, git)
