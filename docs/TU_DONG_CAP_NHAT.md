@@ -12,15 +12,15 @@ Các mốc lịch có thể thay đổi; nguồn chính thức có giá trị ca
 
 ## Một lần chạy
 
-1. Checkout `main` và cài package.
-2. `hydrate` snapshot vào kho SQLite.
+1. Checkout `main` để chạy collector và checkout nhánh `datasets` vào thư mục riêng.
+2. `hydrate` snapshot từ nhánh `datasets` vào kho SQLite.
 3. Chạy `vietlott-auto-update` cho nhóm sản phẩm.
 4. Nếu nguồn chính thức lỗi, thử nguồn đối chiếu được khai báo.
-5. `publish`, `validate`, `audit` và kiểm tra hồi quy chất lượng.
-6. Đồng bộ lại `main` để tránh ghi đè một lần chạy khác.
-7. Commit `datasets` nếu và chỉ nếu snapshot hợp lệ thay đổi.
+5. `publish`, đồng bộ với nhánh `datasets`, chạy `validate`, `audit` và kiểm tra hồi quy chất lượng.
+6. Commit vào nhánh `datasets` nếu và chỉ nếu snapshot hợp lệ thay đổi.
+7. Vào 00:30 giờ Việt Nam, chạy lượt chốt cuối. Nếu lượt chốt thành công, gắn tag `data-YYYY-MM-DD` và tạo GitHub Release từ đúng snapshot đã kiểm tra.
 
-Báo cáo JSON của lượt chạy được lưu trong thư mục tạm của Actions; dữ liệu lâu dài chỉ là `datasets` và metadata đã kiểm tra.
+Báo cáo JSON của lượt chạy được lưu trong thư mục tạm của Actions. Dữ liệu lâu dài nằm trên nhánh `datasets` và trong các release đã phát hành.
 
 ## Chịu lỗi
 
@@ -30,5 +30,7 @@ Báo cáo JSON của lượt chạy được lưu trong thư mục tạm của A
 - Mạng lỗi: retry, backoff, jitter và `Retry-After`.
 - HTML thay đổi: parser dừng với lỗi để sửa có kiểm soát.
 - Một sản phẩm lỗi: phần hợp lệ của sản phẩm khác vẫn được giữ, sau đó workflow báo đỏ.
+- Lượt chốt trong ngày lỗi: giữ phần dữ liệu hợp lệ trên nhánh `datasets`, nhưng không phát hành snapshot ngày đó.
+- Tag release đã tồn tại: không ghi đè. Bản hiệu chỉnh dùng tag mới có hậu tố `-r2`.
 
 Không có workflow build/deploy website hoặc sinh artifact dự đoán/phân tích.

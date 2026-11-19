@@ -2,7 +2,7 @@
 
 ```mermaid
 flowchart TD
-    A["GitHub Actions hoặc CLI"] --> B["Nguồn Vietlott ưu tiên"]
+    A["GitHub Actions trên main hoặc CLI"] --> B["Nguồn Vietlott ưu tiên"]
     B --> C["Parser theo họ sản phẩm"]
     B -. "Lỗi truy cập" .-> D["Nguồn đối chiếu"]
     D --> C
@@ -11,6 +11,8 @@ flowchart TD
     F --> G["draws.csv · prizes.csv · prize_rules.csv"]
     G --> H["Repository data publisher"]
     H --> I["datasets phân vùng + metadata + manifest"]
+    I --> J["Nhánh datasets"]
+    J --> K["Tag và GitHub Release theo ngày"]
 ```
 
 ## Thành phần
@@ -26,6 +28,7 @@ flowchart TD
 - `full_backfill.py`, `keno_history.py`, `keno_gap_repair.py`: thu thập lịch sử và sửa khoảng trống có bằng chứng.
 - `repository_data.py`: hydrate, publish, validate và tạo metadata snapshot.
 - `quality.py` và `audit.py`: kiểm tra tính đầy đủ, trùng khóa, schema, nguồn và kích thước tệp.
+- Workflow chạy collector từ `main`, ghi snapshot hợp lệ vào nhánh `datasets`, rồi phát hành tag ngày sau lượt chốt thành công.
 
 ## Nguyên tắc bất biến
 

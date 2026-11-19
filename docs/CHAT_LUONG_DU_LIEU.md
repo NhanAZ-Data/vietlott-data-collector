@@ -1,6 +1,6 @@
 # Chất lượng dữ liệu và provenance
 
-Chất lượng snapshot được kiểm tra ở ba lớp độc lập: cấu trúc bản ghi, nguồn quan sát và độ phủ kho. Kết quả được sinh vào `datasets/metadata/quality-report.json`.
+Chất lượng snapshot được kiểm tra ở ba lớp độc lập: cấu trúc bản ghi, nguồn quan sát và độ phủ kho. Kết quả được sinh vào `datasets/metadata/quality-report.json` trên nhánh dữ liệu và được giữ trong từng release hằng ngày.
 
 ## Kiểm tra cấu trúc
 
@@ -24,6 +24,8 @@ Mỗi dòng giữ `source_url`, `fetched_at` và các thuộc tính nguồn. `da
 Quality report ghi số dòng, khoảng ngày, khoảng mã, trạng thái xác nhận, nguồn, số giải và các khoảng trống ứng viên. Khoảng trống chỉ là tín hiệu cần thu thập thêm; nó không được biến thành bản ghi giả.
 
 ## Lệnh kiểm tra
+
+Tải nhánh `datasets` hoặc giải nén một release trước khi chạy lệnh kiểm tra tại thư mục snapshot.
 
 ```powershell
 vietlott-repository-data validate --source-dir datasets

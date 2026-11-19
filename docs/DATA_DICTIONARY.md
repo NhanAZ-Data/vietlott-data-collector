@@ -1,6 +1,6 @@
 # Hợp đồng dữ liệu
 
-Tài liệu này mô tả snapshot trong `datasets/` và kho làm việc do collector tạo ra. Các trường được giữ để người dùng có thể tải, kiểm tra và tái sử dụng dữ liệu mà không cần biết nội bộ parser.
+Tài liệu này mô tả snapshot trong `datasets/` và kho làm việc do collector tạo ra. Snapshot mới nhất nằm trên nhánh `datasets`. Release `data-YYYY-MM-DD` giữ snapshot đầy đủ tại thời điểm chốt ngày. Các trường được giữ để người dùng có thể tải, kiểm tra và tái sử dụng dữ liệu mà không cần biết nội bộ parser.
 
 ## Bố cục snapshot
 
