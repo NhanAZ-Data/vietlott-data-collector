@@ -1,11 +1,11 @@
 {
   "dataset_rows": {
-    "draws": 51107,
+    "draws": 51202,
     "prizes": 12519
   },
   "date_range": {
     "first": "2016-07-20",
-    "last": "2021-02-11"
+    "last": "2021-02-12"
   },
   "files": {
     "draws/keno/2019-08.csv": {
@@ -99,9 +99,9 @@
       "sha256": "b0554a203de88659db324cf2ab095b44efab79330ced6f8f2aca918c0d44390b"
     },
     "draws/keno/2021-02.csv": {
-      "bytes": 438420,
-      "data_rows": 1045,
-      "sha256": "bfb528319d553f46cd3715668282c2d581dd2dab7203e2f138a8795b518c6209"
+      "bytes": 478346,
+      "data_rows": 1140,
+      "sha256": "92762a0407e76c5783aa06bde07c378a5282129b039c2c6f2a75b833914e4ef6"
     },
     "draws/max3d/all.csv": {
       "bytes": 228710,
@@ -130,11 +130,11 @@
     },
     "metadata/dataset-summary.json": {
       "bytes": 1465,
-      "sha256": "e1fd53037a03860d4b08d80d148efb92c03edb07f5e7e2970e67d76b906ac3a1"
+      "sha256": "046ea3e5c192d22bcd11d45571e6f251c85c4c21a551265b3d5c9ecbf7c74d12"
     },
     "metadata/quality-report.json": {
       "bytes": 1649,
-      "sha256": "3b121f58ac2c6514b7694d6b34d954fcd7093bd848d83fa722ce60a7d5466707"
+      "sha256": "6229302c688da2a28ba8221e0d37fb04c19de07e4e23f723af6a62bb7b40c3f2"
     },
     "metadata/retrospective-reconstruction.json": {
       "bytes": 1046,
@@ -173,5 +173,5 @@
   "parser_version": "0.2.0",
   "repository_commit": "a6c89820a62907c1c9ecd1f4b3ab26964aedee2c",
   "schema_version": 1,
-  "snapshot_at": "2026-06-13T20:42:09+00:00"
+  "snapshot_at": "2026-06-13T20:42:12+00:00"
 }
