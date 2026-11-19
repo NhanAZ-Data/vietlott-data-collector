@@ -1,4 +1,4 @@
-name: Kiểm tra Vietlott Data Collector
+name: Test Vietlott Data Collector
 
 on:
   push:
@@ -13,22 +13,22 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Lấy mã nguồn
+      - name: Check out source
         uses: actions/checkout@v6
         with:
           persist-credentials: false
 
-      - name: Cài Python
+      - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
 
-      - name: Cài thư viện
+      - name: Install dependencies
         run: python -m pip install -e ".[dev]"
 
-      - name: Kiểm tra định dạng và lỗi tĩnh
+      - name: Run static checks
         run: python -m ruff check .
 
-      - name: Chạy unit test
+      - name: Run unit tests
         run: python -m pytest

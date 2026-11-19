@@ -50,7 +50,7 @@ def test_quality_monitor_reports_regressions_without_calling_them_missing_draws(
         "secondary_source_rate_increased",
         "not_confirmed_increased",
     }
-    assert "không khẳng định kỳ quay bị thiếu" in alerts[0].message
+    assert "does not mean a draw is missing" in alerts[0].message
 
 
 def test_quality_monitor_accepts_growth_without_rate_regression() -> None:

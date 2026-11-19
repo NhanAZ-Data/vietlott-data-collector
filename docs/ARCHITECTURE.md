@@ -1,44 +1,44 @@
-# Kiến trúc Vietlott Data Collector
+# Vietlott Data Collector architecture
 
 ```mermaid
 flowchart TD
-    A["GitHub Actions trên main hoặc CLI"] --> B["Nguồn Vietlott ưu tiên"]
-    B --> C["Parser theo họ sản phẩm"]
-    B -. "Lỗi truy cập" .-> D["Nguồn đối chiếu"]
+    A["GitHub Actions on main or CLI"] --> B["Primary Vietlott source"]
+    B --> C["Product-family parser"]
+    B -. "Access failure" .-> D["Secondary source"]
     D --> C
-    C --> E["Validation + provenance + chuẩn hóa"]
+    C --> E["Validation, provenance, normalization"]
     E --> F["SQLite working store"]
     F --> G["draws.csv · prizes.csv · prize_rules.csv"]
     G --> H["Repository data publisher"]
-    H --> I["datasets phân vùng + metadata + manifest"]
-    I --> J["Nhánh datasets"]
-    J --> K["Tag và GitHub Release theo ngày"]
+    H --> I["Partitioned datasets, metadata, manifest"]
+    I --> J["datasets branch"]
+    J --> K["Daily tag and GitHub Release"]
 ```
 
-## Thành phần
+## Components
 
-- `config.py`: danh mục sản phẩm, endpoint, miền số và kích thước trang.
-- `http.py`: session, retry, backoff, `Retry-After`, rate limit và jitter.
-- `sources/`: nguồn Vietlott chính thức và nguồn đối chiếu khi cần.
-- `parsers/`: chuyển HTML/Ajax thành `DrawRecord` và `PrizeRecord`.
-- `validation.py`: kiểm tra số lượng, miền giá trị, trùng số và cấu trúc giải.
-- `provenance.py`: lưu nguồn, mức đối chiếu và các chuyển trạng thái được phép.
-- `storage.py`: upsert theo khóa ổn định, SQLite và xuất CSV/Parquet.
-- `incremental_update.py`: cập nhật định kỳ, đối chiếu vùng gần nhất và fallback.
-- `full_backfill.py`, `keno_history.py`, `keno_gap_repair.py`: thu thập lịch sử và sửa khoảng trống có bằng chứng.
-- `repository_data.py`: hydrate, publish, validate và tạo metadata snapshot.
-- `quality.py` và `audit.py`: kiểm tra tính đầy đủ, trùng khóa, schema, nguồn và kích thước tệp.
-- Workflow chạy collector từ `main`, ghi snapshot hợp lệ vào nhánh `datasets`, rồi phát hành tag ngày sau lượt chốt thành công.
+- `config.py`: product catalog, endpoints, number ranges, and page sizes.
+- `http.py`: sessions, retries, backoff, `Retry-After`, rate limits, and jitter.
+- `sources/`: the official Vietlott source and secondary sources used when needed.
+- `parsers/`: converts HTML and Ajax responses into `DrawRecord` and `PrizeRecord` objects.
+- `validation.py`: checks counts, value ranges, duplicate numbers, and prize structure.
+- `provenance.py`: records sources, verification levels, and allowed status transitions.
+- `storage.py`: stable-key upserts, SQLite storage, and CSV/Parquet export.
+- `incremental_update.py`: scheduled updates, recent-history reconciliation, and fallbacks.
+- `full_backfill.py`, `keno_history.py`, `keno_gap_repair.py`: historical collection and evidence-based gap repair.
+- `repository_data.py`: hydrates, publishes, validates, and audits repository snapshots.
+- `quality.py` and `audit.py`: check completeness, duplicate keys, schemas, sources, and file sizes.
+- Workflows run the collector from `main`, write valid snapshots to `datasets`, and publish a daily tag after the final run succeeds.
 
-## Nguyên tắc bất biến
+## Invariants
 
-- Nguồn quyết định kỳ nào tồn tại; lịch chỉ quyết định lúc thăm dò.
-- Không suy mã kỳ kế tiếp và không nội suy kết quả còn thiếu.
-- Upsert không tạo bản ghi trùng và không xóa bản ghi bị rút xác nhận.
-- Nguồn phụ không ghi đè bản ghi chính thức nếu chưa có quy tắc đối chiếu.
-- Mọi thay đổi dữ liệu phải đi qua `publish` và `validate`.
-- Metadata được sinh lại từ snapshot, không chỉnh tay để làm đẹp số liệu.
+- Sources determine which draws exist. Schedules only determine when to check.
+- Never infer the next draw ID or interpolate a missing result.
+- Upserts do not create duplicate records or remove records whose confirmation was withdrawn.
+- Secondary sources do not overwrite official records without an explicit reconciliation rule.
+- Every data change goes through `publish` and `validate`.
+- Metadata is regenerated from the snapshot and is never edited by hand to change reported values.
 
-## Mở rộng
+## Extending the collector
 
-Thêm `ProductSpec` trong `config.py`, fixture parser và test dữ liệu tương ứng. Nếu mô hình `DrawRecord`/`PrizeRecord` vẫn đủ trường thì không cần thay đổi tầng lưu trữ.
+Add a `ProductSpec` in `config.py`, parser fixtures, and matching data coverage. If `DrawRecord` and `PrizeRecord` already contain the required fields, the storage layer does not need to change.

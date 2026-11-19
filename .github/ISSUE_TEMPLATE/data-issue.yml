@@ -1,5 +1,5 @@
-name: Lỗi dữ liệu
-description: Báo bản ghi thiếu, sai, trùng hoặc xung đột nguồn
+name: Report a data issue
+description: Report missing, incorrect, duplicated, or conflicting records
 title: "data: "
 labels:
   - data-quality
@@ -7,7 +7,7 @@ body:
   - type: dropdown
     id: product
     attributes:
-      label: Sản phẩm
+      label: Product
       options:
         - Mega 6/45
         - Power 6/55
@@ -22,24 +22,24 @@ body:
   - type: input
     id: draw
     attributes:
-      label: Mã kỳ quay
+      label: Draw ID
   - type: textarea
     id: observed
     attributes:
-      label: Dữ liệu đang có
-      description: Ghi giá trị, tệp và dòng nếu biết
+      label: Current data
+      description: Provide the value, file, and row if known
     validations:
       required: true
   - type: textarea
     id: expected
     attributes:
-      label: Dữ liệu mong đợi
+      label: Expected data
     validations:
       required: true
   - type: textarea
     id: sources
     attributes:
-      label: Nguồn đối chiếu
-      description: Cung cấp URL và thời điểm truy cập
+      label: Sources to compare
+      description: Provide URLs and access times
     validations:
       required: true

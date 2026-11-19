@@ -20,6 +20,6 @@ def test_render_summary_reports_fallback_and_validation() -> None:
         },
     )
 
-    assert "Kỳ mới | 2" in summary
+    assert "New draws | 2" in summary
     assert "bingo18, keno" in summary
-    assert "Kiểm tra dataset đạt" in summary
+    assert "Dataset validation: passed" in summary

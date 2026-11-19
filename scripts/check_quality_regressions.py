@@ -51,9 +51,9 @@ def compare_quality_reports(
                         product=product,
                         code="source_stale",
                         message=(
-                            f"Ngày dữ liệu mới nhất đã cách {age} ngày, vượt mốc "
-                            f"theo dõi {stale_limit} ngày. Đây là cảnh báo kiểm tra "
-                            "nguồn, không khẳng định kỳ quay bị thiếu."
+                            f"The latest data is {age} days old, exceeding the "
+                            f"{stale_limit}-day monitoring threshold. This is a "
+                            "source freshness warning and does not mean a draw is missing."
                         ),
                         after=profile.get("last_date"),
                     )
@@ -71,7 +71,7 @@ def compare_quality_reports(
                 Alert(
                     product=product,
                     code="unknown_source_increased",
-                    message="Số bản ghi có nguồn không rõ tăng sau lần cập nhật.",
+                    message="The number of records with unknown sources increased.",
                     before=old_unknown,
                     after=new_unknown,
                 )
@@ -87,8 +87,9 @@ def compare_quality_reports(
                     product=product,
                     code="secondary_source_rate_increased",
                     message=(
-                        "Tỷ lệ bản ghi chỉ có nguồn phụ hoặc đang chờ đối chiếu tăng "
-                        f"hơn {SOURCE_RATE_TOLERANCE:.1%}."
+                        "The share of records with only secondary sources or pending "
+                        "official verification increased by more than "
+                        f"{SOURCE_RATE_TOLERANCE:.1%}."
                     ),
                     before=round(old_rate, 8),
                     after=round(new_rate, 8),
@@ -102,7 +103,7 @@ def compare_quality_reports(
                 Alert(
                     product=product,
                     code="not_confirmed_increased",
-                    message="Số kỳ chưa xác nhận tăng sau lần cập nhật.",
+                    message="The number of unconfirmed draws increased.",
                     before=old_pending,
                     after=new_pending,
                 )
@@ -113,7 +114,7 @@ def compare_quality_reports(
 def main() -> int:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
-    parser = argparse.ArgumentParser(description="Kiểm tra hồi quy chất lượng dataset")
+    parser = argparse.ArgumentParser(description="Check dataset quality regressions")
     parser.add_argument("--before", type=Path)
     parser.add_argument("--after", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -176,16 +177,19 @@ def _date(value: object) -> date | None:
 
 
 def _markdown_summary(alerts: list[Alert]) -> str:
-    lines = ["## Giám sát chất lượng dữ liệu", ""]
+    lines = ["## Dataset quality monitoring", ""]
     if not alerts:
-        lines.append("Không phát hiện hồi quy theo các ngưỡng cảnh báo hiện tại.")
+        lines.append("No regressions found under the current warning thresholds.")
         return "\n".join(lines)
-    lines.append(f"Phát hiện {len(alerts)} cảnh báo cần kiểm tra. Cảnh báo không tự kết luận mất kỳ.")
+    lines.append(
+        f"Found {len(alerts)} warning(s) that need review. "
+        "Warnings do not confirm that a draw is missing."
+    )
     lines.append("")
     for alert in alerts:
         change = ""
         if alert.before is not None:
-            change = f" Trước `{alert.before}`, sau `{alert.after}`."
+            change = f" (before `{alert.before}`, after `{alert.after}`)."
         lines.append(f"- `{alert.product}` `{alert.code}` {alert.message}{change}")
     return "\n".join(lines)
 

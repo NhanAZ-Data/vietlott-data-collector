@@ -1,0 +1,34 @@
+name: Report a source issue
+description: Report an unavailable endpoint, parser failure, or outdated update schedule
+title: "source: "
+labels:
+  - source
+body:
+  - type: input
+    id: source
+    attributes:
+      label: Source or URL
+    validations:
+      required: true
+  - type: input
+    id: first_seen
+    attributes:
+      label: When did the issue start?
+  - type: textarea
+    id: symptom
+    attributes:
+      label: Symptoms
+      description: HTTP status, short log excerpt, or HTML change
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Affected products, draw IDs, or data at risk
+    validations:
+      required: true
+  - type: textarea
+    id: fallback
+    attributes:
+      label: Fallback sources checked
