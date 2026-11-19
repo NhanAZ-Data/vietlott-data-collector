@@ -1,12 +1,12 @@
 # Vietlott Data Collector
 
-`vietlott-data-collector` là công cụ Python để thu thập, chuẩn hóa, kiểm tra và phát hành dữ liệu kết quả Vietlott. Repository cũng cung cấp snapshot CSV để dùng trong các ứng dụng và nghiên cứu khác.
+`vietlott-data-collector` là công cụ Python để thu thập, chuẩn hóa và kiểm tra dữ liệu kết quả Vietlott. Snapshot CSV được lưu trên nhánh dữ liệu và phát hành hằng ngày để dùng trong ứng dụng và nghiên cứu.
 
 ## Phạm vi
 
 Project hỗ trợ tám sản phẩm: Mega 6/45 (`mega645`), Power 6/55 (`power655`), Lotto 5/35 (`lotto535`), Max 3D (`max3d`), Max 3D Pro (`max3dpro`), Max 4D (`max4d`), Keno (`keno`) và Bingo18 (`bingo18`).
 
-Collector lưu kết quả kỳ quay, giải thưởng, trạng thái xác nhận và thông tin nguồn. Snapshot trong `datasets/` giữ cấu trúc CSV, metadata chất lượng và manifest có hash để người dùng kiểm tra phiên bản dữ liệu.
+Collector lưu kết quả kỳ quay, giải thưởng, trạng thái xác nhận và thông tin nguồn. Mỗi snapshot giữ cấu trúc CSV, metadata chất lượng và manifest có hash để người dùng kiểm tra phiên bản dữ liệu.
 
 ## Cài đặt
 
@@ -56,7 +56,15 @@ Thay `csv` bằng `parquet` nếu đã cài extra `parquet`. Hãy thay `you@exam
 
 ## Dùng snapshot đã phát hành
 
-Snapshot trong `datasets/` có các tệp chính sau:
+Tải snapshot mới nhất từ [nhánh `datasets`](https://github.com/NhanAZ-Data/vietlott-data-collector/tree/datasets) hoặc chọn ngày trong [danh sách Releases](https://github.com/NhanAZ-Data/vietlott-data-collector/releases). Nhánh dữ liệu thay đổi khi có kỳ mới. Release theo tag `data-YYYY-MM-DD` là snapshot cố định theo ngày.
+
+Có thể clone riêng nhánh dữ liệu:
+
+```powershell
+git clone --branch datasets --single-branch --depth 1 https://github.com/NhanAZ-Data/vietlott-data-collector.git vietlott-datasets
+```
+
+Trong bản tải về, thư mục `datasets/` có các tệp chính sau:
 
 | Đường dẫn | Nội dung |
 | --- | --- |
@@ -87,9 +95,9 @@ vietlott-repository-data audit --source-dir datasets
 
 ## Cập nhật tự động
 
-GitHub Actions thường xuyên kiểm tra Keno và Bingo18, đồng thời kiểm tra Mega 6/45, Power 6/55, Lotto 5/35, Max 3D và Max 3D Pro theo lịch. Max 4D có trong snapshot lịch sử nhưng không thuộc lịch cập nhật tự động.
+GitHub Actions chạy collector từ `main`, cập nhật snapshot trên nhánh `datasets`, rồi phát hành snapshot theo ngày vào 00:30 giờ Việt Nam. Keno và Bingo18 được kiểm tra thường xuyên. Mega 6/45, Power 6/55, Lotto 5/35, Max 3D và Max 3D Pro được kiểm tra theo lịch. Max 4D có trong snapshot lịch sử nhưng không thuộc lịch cập nhật tự động.
 
-Mỗi lượt khôi phục kho làm việc từ snapshot, thu thập và đối chiếu dữ liệu, áp dụng ngoại lệ có nguồn, rồi chạy kiểm tra chất lượng. Workflow chỉ cập nhật `datasets/` khi snapshot hợp lệ có thay đổi. Lịch chỉ xác định thời điểm kiểm tra; collector không tạo kỳ quay khi Vietlott chưa công bố dữ liệu.
+Mỗi lượt khôi phục kho làm việc từ snapshot, thu thập và đối chiếu dữ liệu, áp dụng ngoại lệ có nguồn, rồi chạy kiểm tra chất lượng. Workflow chỉ cập nhật nhánh `datasets` khi snapshot hợp lệ có thay đổi. Release hằng đêm chỉ được tạo sau khi lượt chốt dữ liệu thành công. Lịch chỉ xác định thời điểm kiểm tra; collector không tạo kỳ quay khi Vietlott chưa công bố dữ liệu.
 
 ## Tài liệu
 

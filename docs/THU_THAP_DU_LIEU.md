@@ -25,6 +25,8 @@ Bản ghi từ nguồn đối chiếu phải có provenance trong `attributes_js
 
 Hai sản phẩm tần suất cao có collector lịch sử riêng. Khoảng trống mã kỳ chỉ được bổ sung khi có quan sát độc lập đủ cấu trúc; mã bị thông báo không phát hành được ghi vào `datasets/exclusions.csv` hoặc giữ với `draw_status=not_confirmed`. Không suy ra kết quả từ mã trước và sau.
 
+Snapshot mới nhất được lưu trên nhánh `datasets`. Mỗi release `data-YYYY-MM-DD` giữ snapshot đầy đủ tại thời điểm chốt ngày.
+
 ## Quy trình một lượt
 
 1. Khôi phục CSV từ `datasets` vào SQLite.

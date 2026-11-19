@@ -11,12 +11,21 @@ on:
         description: Tên ngắn dùng cho artifact
         required: true
         type: string
+      publish_release:
+        description: Phát hành snapshot đã kiểm tra sau khi cập nhật
+        required: false
+        default: false
+        type: boolean
+      snapshot_date:
+        description: Ngày snapshot theo giờ Việt Nam, để trống dùng ngày hôm qua
+        required: false
+        default: ""
+        type: string
 
-permissions:
-  contents: write
+permissions: {}
 
 concurrency:
-  group: vietlott-main-writer
+  group: vietlott-dataset-writer
   cancel-in-progress: false
 
 jobs:
@@ -24,6 +33,8 @@ jobs:
     name: Cập nhật và kiểm tra dữ liệu
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: write
     outputs:
       data_changed: ${{ steps.commit.outputs.changed }}
     env:
@@ -33,10 +44,17 @@ jobs:
       - name: Lấy mã nguồn
         uses: actions/checkout@v6
         with:
+          ref: main
           fetch-depth: 0
+          persist-credentials: false
 
-      - name: Đồng bộ nhánh main mới nhất
-        run: git pull --ff-only origin main
+      - name: Lấy nhánh dữ liệu
+        uses: actions/checkout@v6
+        with:
+          ref: datasets
+          path: dataset-branch
+          fetch-depth: 0
+          persist-credentials: false
 
       - name: Cài Python
         uses: actions/setup-python@v6
@@ -53,16 +71,16 @@ jobs:
           before_dir="$RUNNER_TEMP/vietlott-reports/before"
           mkdir -p "$before_dir"
           for file in \
-            datasets/metadata/dataset-summary.json \
-            datasets/metadata/quality-report.json \
-            datasets/metadata/snapshot-manifest.json; do
+            dataset-branch/datasets/metadata/dataset-summary.json \
+            dataset-branch/datasets/metadata/quality-report.json \
+            dataset-branch/datasets/metadata/snapshot-manifest.json; do
             if test -f "$file"; then
               cp "$file" "$before_dir/$(basename "$file")"
             fi
           done
 
       - name: Khôi phục kho làm việc
-        run: vietlott-repository-data hydrate --source-dir datasets --destination-dir data
+        run: vietlott-repository-data hydrate --source-dir dataset-branch/datasets --destination-dir data
 
       - name: Đọc kỳ mới từ nguồn ưu tiên
         id: update
@@ -91,22 +109,44 @@ jobs:
           fi
           vietlott-repository-data publish \
             --source-dir data \
-            --destination-dir datasets \
+            --destination-dir dataset-branch/datasets \
             > "$report_dir/publish-report.json"
-          vietlott-repository-data validate \
-            --source-dir datasets \
-            > "$report_dir/validation-report.json"
+
+      - name: Đồng bộ nhánh dữ liệu trước khi kiểm tra
+        shell: bash
+        run: |
+          git -C dataset-branch add -A datasets
+          patch_file="$RUNNER_TEMP/vietlott-data-update.patch"
+          git -C dataset-branch diff --cached --binary -- datasets > "$patch_file"
+          git -C dataset-branch fetch origin datasets
+          if test "$(git -C dataset-branch rev-parse HEAD)" = "$(git -C dataset-branch rev-parse FETCH_HEAD)"; then
+            exit 0
+          fi
+
+          git -C dataset-branch reset --hard FETCH_HEAD
+          if test -s "$patch_file"; then
+            git -C dataset-branch apply --3way "$patch_file"
+          fi
+
+      - name: Kiểm tra snapshot sau đồng bộ
+        shell: bash
+        run: |
+          report_dir="$RUNNER_TEMP/vietlott-reports"
+          mkdir -p "$report_dir"
           vietlott-repository-data audit \
-            --source-dir datasets \
+            --source-dir dataset-branch/datasets \
             > "$report_dir/quality-audit.json"
+          vietlott-repository-data validate \
+            --source-dir dataset-branch/datasets \
+            > "$report_dir/validation-report.json"
           after_dir="$report_dir/after"
           mkdir -p "$after_dir"
-          cp datasets/metadata/dataset-summary.json "$after_dir/"
-          cp datasets/metadata/quality-report.json "$after_dir/"
-          cp datasets/metadata/snapshot-manifest.json "$after_dir/"
+          cp dataset-branch/datasets/metadata/dataset-summary.json "$after_dir/"
+          cp dataset-branch/datasets/metadata/quality-report.json "$after_dir/"
+          cp dataset-branch/datasets/metadata/snapshot-manifest.json "$after_dir/"
           python scripts/check_quality_regressions.py \
             --before "$report_dir/before/quality-report.json" \
-            --after datasets/metadata/quality-report.json \
+            --after dataset-branch/datasets/metadata/quality-report.json \
             --output "$report_dir/quality-regressions.json" \
             >> "$GITHUB_STEP_SUMMARY"
 
@@ -130,47 +170,37 @@ jobs:
           if-no-files-found: ignore
           retention-days: 14
 
-      - name: Đồng bộ main trước khi commit dữ liệu
-        shell: bash
-        run: |
-          git fetch origin main
-          if test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)"; then
-            exit 0
-          fi
-
-          patch_file="$RUNNER_TEMP/vietlott-data-update.patch"
-          git diff --binary -- datasets > "$patch_file"
-          git reset --hard origin/main
-
-          if test -s "$patch_file"; then
-            git apply --3way "$patch_file"
-          fi
-
-          python -m pip install -e .
-          report_dir="$RUNNER_TEMP/vietlott-reports"
-          mkdir -p "$report_dir"
-          vietlott-repository-data validate \
-            --source-dir datasets \
-            > "$report_dir/validation-report-after-main-sync.json"
-          vietlott-repository-data audit \
-            --source-dir datasets \
-            > "$report_dir/quality-audit-after-main-sync.json"
-
       - name: Commit khi dữ liệu thay đổi
         id: commit
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          git add datasets
-          if git diff --cached --quiet; then
+          git -C dataset-branch add -A datasets
+          if git -C dataset-branch diff --cached --quiet; then
             echo "Không có kỳ mới hoặc thay đổi chính thức"
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "data: cập nhật kết quả Vietlott"
-          git push origin HEAD:main
+          git -C dataset-branch config user.name "github-actions[bot]"
+          git -C dataset-branch config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C dataset-branch commit -m "data: cập nhật kết quả Vietlott"
+          gh auth setup-git
+          git -C dataset-branch push origin HEAD:datasets
           echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Phát hành snapshot theo ngày
+        if: ${{ inputs.publish_release && steps.update.outcome == 'success' && steps.commit.outcome == 'success' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SNAPSHOT_DATE: ${{ inputs.snapshot_date }}
+        run: >-
+          gh auth setup-git &&
+          python scripts/publish_dataset_release.py
+          --repository-dir dataset-branch
+          --data-dir dataset-branch/datasets
+          --snapshot-date "$SNAPSHOT_DATE"
+          --source-commit "$GITHUB_SHA"
 
       - name: Báo lỗi nguồn sau khi bảo toàn dữ liệu hợp lệ
         if: steps.update.outcome == 'failure'

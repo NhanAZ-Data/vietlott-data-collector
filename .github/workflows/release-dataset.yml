@@ -1,0 +1,19 @@
+name: Phát hành snapshot dữ liệu hằng đêm
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 17 * * *"
+
+permissions: {}
+
+jobs:
+  release:
+    uses: ./.github/workflows/update-dataset.yml
+    permissions:
+      contents: write
+    with:
+      products: mega645 power655 lotto535 max3d max3dpro keno bingo18
+      report_name: nightly-release
+      publish_release: true
+      snapshot_date: ""
