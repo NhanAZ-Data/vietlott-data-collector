@@ -110,8 +110,14 @@ Each run restores the working dataset from a snapshot, collects and reconciles r
 - [Architecture](docs/ARCHITECTURE.md)
 - [Source survey](docs/SOURCE_SURVEY.md)
 
-## Sources and license
+## Project scope, sources, and contact
 
-The collector prioritizes public results from [Vietlott](https://vietlott.vn/vi/trung-thuong/ket-qua-trung-thuong/). Snapshots retain source information and confirmation status so users can assess records before using them.
+This is an independent project that collects, normalizes, and validates publicly available Vietlott draw data. It is intended to support software development, educational use, and exploratory statistical analysis of published draw histories, including the study of randomness.
+
+The project does not sell lottery tickets, accept bets, or operate lottery games or prize promotions. It is maintained on a non-commercial basis and does not accept or solicit donations.
+
+The collector prioritizes publicly available results from [Vietlott](https://vietlott.vn/vi/trung-thuong/ket-qua-trung-thuong/) and may use other documented sources when needed. Data is normalized and provided on a best-effort basis. It may be incomplete or later corrected, so please verify results with the original sources before relying on them. Snapshots retain source information and confirmation status where available.
 
 This project is not affiliated with or endorsed by Vietlott. The source code is released under the MIT License. Source data remains subject to the rights and terms of its respective owners.
+
+For data corrections or general questions, please open a [GitHub issue](https://github.com/NhanAZ-Data/vietlott-data-collector/issues). For rights or privacy concerns, email [itsnhanaz@gmail.com](mailto:itsnhanaz@gmail.com). Requests will be reviewed in good faith, and affected data will be corrected or removed where warranted.
