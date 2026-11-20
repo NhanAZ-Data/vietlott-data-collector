@@ -43,10 +43,88 @@ def snapshot_date(value: str | None, now: datetime | None = None) -> date:
 
 
 def remote_tag(repository: Path, tag: str) -> str | None:
-    output = run_git(repository, "ls-remote", "origin", f"refs/tags/{tag}")
-    if not output:
-        return None
-    return output.split("\t", maxsplit=1)[0]
+    output = run_git(
+        repository,
+        "ls-remote",
+        "--tags",
+        "origin",
+        f"refs/tags/{tag}",
+        f"refs/tags/{tag}^{{}}",
+    )
+    targets: dict[str, str] = {}
+    for line in output.splitlines():
+        parts = line.split("\t", maxsplit=1)
+        if len(parts) == 2:
+            target, reference = parts
+            targets[reference] = target
+    return targets.get(f"refs/tags/{tag}^{{}}", targets.get(f"refs/tags/{tag}"))
+
+
+def _is_snapshot_tag(tag: str, base_tag: str) -> bool:
+    if tag == base_tag:
+        return True
+    match = re.fullmatch(rf"{re.escape(base_tag)}-r(\d+)", tag)
+    return match is not None and int(match.group(1)) >= 2
+
+
+def _local_snapshot_tags(repository: Path, base_tag: str) -> dict[str, str]:
+    output = run_git(repository, "tag", "--list", f"{base_tag}*")
+    targets: dict[str, str] = {}
+    for tag in output.splitlines():
+        if not _is_snapshot_tag(tag, base_tag):
+            continue
+        target = run_git(
+            repository,
+            "rev-parse",
+            "--verify",
+            f"refs/tags/{tag}^{{commit}}",
+            check=False,
+        )
+        if target:
+            targets[tag] = target
+    return targets
+
+
+def _remote_snapshot_tags(repository: Path, base_tag: str) -> dict[str, str]:
+    output = run_git(
+        repository,
+        "ls-remote",
+        "--tags",
+        "origin",
+        f"refs/tags/{base_tag}*",
+    )
+    targets: dict[str, str] = {}
+    for line in output.splitlines():
+        target, reference = line.split("\t", maxsplit=1)
+        reference = reference.removeprefix("refs/tags/")
+        peeled = reference.endswith("^{}")
+        tag = reference.removesuffix("^{}") if peeled else reference
+        if not _is_snapshot_tag(tag, base_tag):
+            continue
+        if peeled or tag not in targets:
+            targets[tag] = target
+    return targets
+
+
+def select_release_tag(repository: Path, day: date, head: str) -> str:
+    base_tag = f"data-{day.isoformat()}"
+    local_tags = _local_snapshot_tags(repository, base_tag)
+    remote_tags = _remote_snapshot_tags(repository, base_tag)
+
+    revision = 1
+    while True:
+        tag = base_tag if revision == 1 else f"{base_tag}-r{revision}"
+        local_target = local_tags.get(tag)
+        remote_target = remote_tags.get(tag)
+        if local_target is None and remote_target is None:
+            return tag
+        if (
+            local_target in {None, head}
+            and remote_target in {None, head}
+            and head in {local_target, remote_target}
+        ):
+            return tag
+        revision += 1
 
 
 def publish_release(
@@ -66,26 +144,24 @@ def publish_release(
             message = f"{message}\n{details}"
         raise RuntimeError(message)
 
-    tag = f"data-{day.isoformat()}"
-    tag_match = TAG_PATTERN.fullmatch(tag)
+    base_tag = f"data-{day.isoformat()}"
+    tag_match = TAG_PATTERN.fullmatch(base_tag)
     if not tag_match or tag_match.group(1) != day.isoformat():
-        raise RuntimeError(f"Release tag {tag} is invalid.")
-
+        raise RuntimeError(f"Release tag {base_tag} is invalid.")
     head = run_git(repository, "rev-parse", "HEAD")
+    tag = select_release_tag(repository, day, head)
     existing_remote = remote_tag(repository, tag)
+    local_tag = run_git(
+        repository,
+        "rev-parse",
+        "--verify",
+        f"refs/tags/{tag}^{{commit}}",
+        check=False,
+    )
     if existing_remote and existing_remote != head:
-        raise RuntimeError(
-            f"Tag {tag} already points to {existing_remote}. "
-            f"The current dataset commit is {head}. "
-            "Use a correction tag such as data-YYYY-MM-DD-r2 instead of replacing it."
-        )
-
-    local_tag = run_git(repository, "rev-parse", f"refs/tags/{tag}^{{commit}}", check=False)
+        raise RuntimeError(f"Tag {tag} changed while selecting a release tag.")
     if local_tag and local_tag != head:
-        raise RuntimeError(
-            f"Local tag {tag} points to {local_tag}. "
-            f"The current dataset commit is {head}."
-        )
+        raise RuntimeError(f"Local tag {tag} changed while selecting a release tag.")
     if not existing_remote:
         if local_tag:
             run_git(repository, "push", "origin", f"refs/tags/{tag}:refs/tags/{tag}")
@@ -106,6 +182,11 @@ def publish_release(
     snapshot_cutoff = datetime.combine(day, datetime.min.time(), tzinfo=LOCAL_TZ) + timedelta(
         days=1, seconds=-1
     )
+    revision_match = re.fullmatch(r"data-\d{4}-\d{2}-\d{2}-r(\d+)", tag)
+    revision = int(revision_match.group(1)) if revision_match else 1
+    title = f"Vietlott dataset {day.isoformat()}"
+    if revision > 1:
+        title += f" (revision {revision})"
     notes = (
         "This full dataset snapshot was created at "
         f"{snapshot_cutoff.isoformat(timespec='seconds')}.\n\n"
@@ -126,7 +207,7 @@ def publish_release(
             github_repository,
             "--verify-tag",
             "--title",
-            f"Vietlott dataset {day.isoformat()}",
+            title,
             "--notes",
             notes,
         ],
