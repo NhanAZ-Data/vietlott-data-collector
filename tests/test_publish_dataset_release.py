@@ -8,6 +8,59 @@ import vietlott_collector.repository_data as repository_data
 from scripts import publish_dataset_release
 
 
+def test_publish_release_creates_daily_tag_when_no_tag_exists(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    repository = tmp_path / "repository"
+    origin = tmp_path / "origin.git"
+    dataset = tmp_path / "datasets"
+    dataset.mkdir()
+    repository.mkdir()
+    _run_git(tmp_path, "init", "--bare", str(origin))
+    _run_git(repository, "init", "--initial-branch=main")
+    _run_git(repository, "config", "user.name", "Snapshot Test")
+    _run_git(repository, "config", "user.email", "snapshot@example.test")
+    _run_git(repository, "config", "tag.gpgSign", "false")
+    _run_git(repository, "config", "tag.forceSignAnnotated", "false")
+    _write_commit(repository, "snapshot.txt", "valid", "initial snapshot")
+    _run_git(repository, "remote", "add", "origin", str(origin))
+    _run_git(repository, "push", "--set-upstream", "origin", "main")
+    head = _run_git(repository, "rev-parse", "HEAD")
+
+    monkeypatch.setattr(
+        repository_data,
+        "validate_repository_data",
+        lambda _root: {"valid": True, "draw_rows": 1, "prize_rows": 1},
+    )
+    published_releases: set[str] = set()
+    real_run = subprocess.run
+
+    def fake_run(args, *positional, **options):
+        if args[0] == "gh" and args[1:3] == ["release", "view"]:
+            tag = args[3]
+            return subprocess.CompletedProcess(args, int(tag not in published_releases), "", "")
+        if args[0] == "gh" and args[1:3] == ["release", "create"]:
+            published_releases.add(args[3])
+            return subprocess.CompletedProcess(args, 0, "", "")
+        return real_run(args, *positional, **options)
+
+    monkeypatch.setattr(publish_dataset_release.subprocess, "run", fake_run)
+
+    tag = "data-2026-11-19"
+    result = publish_dataset_release.publish_release(
+        repository,
+        dataset,
+        date(2026, 11, 19),
+        source_commit="source-commit",
+        github_repository="example/data",
+    )
+
+    assert result == f"Published {tag} at {head}"
+    assert _run_git(repository, "rev-parse", f"refs/tags/{tag}^{{commit}}") == head
+    assert _run_git(repository, "ls-remote", "origin", f"refs/tags/{tag}").split()[0] == head
+
+
 def test_publish_release_uses_correction_tag_when_daily_tag_is_occupied(
     tmp_path: Path,
     monkeypatch,
