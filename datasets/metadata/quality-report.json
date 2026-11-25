@@ -7,7 +7,7 @@
     "structural_validity": "Deterministic validation of identifier width, result shape, number range and uniqueness rules."
   },
   "duplicate_draw_examples": [],
-  "generated_from_dataset_at": "2026-11-24T23:49:31+00:00",
+  "generated_from_dataset_at": "2026-11-25T01:32:24+00:00",
   "grain": "one canonical row per (product, draw_id)",
   "limitations": [
     "Legacy canonical rows do not always retain every raw source observation. Conflict counts are therefore reported as unavailable rather than zero.",
@@ -3595,54 +3595,54 @@
         "validation_mismatches": 0
       },
       "draw_confirmation": {
-        "confirmed": 101776,
+        "confirmed": 101793,
         "not_confirmed": 30
       },
       "first_date": "2024-12-03",
       "last_date": "2026-11-25",
-      "max_id": "0197812",
+      "max_id": "0197829",
       "min_id": "0083123",
       "prize_coverage": {
         "draws_with_prize_rows": 30,
         "prize_rows": 3000,
-        "rate": 0.00029468
+        "rate": 0.00029463
       },
       "prize_status": {
         "complete": 30,
         "not_applicable": 30,
-        "rules_available": 101746
+        "rules_available": 101763
       },
       "result_coverage": {
         "rate": 1.0,
-        "rows_with_result": 101806
+        "rows_with_result": 101823
       },
-      "rows": 101806,
+      "rows": 101823,
       "source_agreement": {
         "conflict_count_reason": "Raw source observations were not retained consistently in legacy rows.",
         "conflicts": null,
         "multi_source_consensus": 0,
         "official_direct": 956,
         "official_verified_match": 384,
-        "pending_official": 12850,
+        "pending_official": 12867,
         "single_secondary_source": 75730,
         "unknown": 11886
       },
       "source_origin": {
         "community": 75730,
         "official": 1340,
-        "secondary": 12850,
+        "secondary": 12867,
         "unknown": 11886
       },
       "source_verification": {
         "official_direct": 956,
         "official_verified_match": 384,
-        "pending_official": 12850,
+        "pending_official": 12867,
         "single_secondary_source": 75730,
         "unknown": 11886
       },
       "structural_validity": {
         "unchecked": 397,
-        "valid": 101409
+        "valid": 101426
       }
     },
     "keno": {
@@ -6447,54 +6447,54 @@
         "validation_mismatches": 0
       },
       "draw_confirmation": {
-        "confirmed": 297008,
+        "confirmed": 297021,
         "not_confirmed": 31
       },
       "first_date": "2019-08-23",
       "last_date": "2026-11-25",
-      "max_id": "0304189",
+      "max_id": "0304202",
       "min_id": "0000001",
       "prize_coverage": {
         "draws_with_prize_rows": 30,
         "prize_rows": 1380,
-        "rate": 0.000101
+        "rate": 0.00010099
       },
       "prize_status": {
         "complete": 30,
         "not_applicable": 31,
-        "rules_available": 296978
+        "rules_available": 296991
       },
       "result_coverage": {
         "rate": 1.0,
-        "rows_with_result": 297039
+        "rows_with_result": 297052
       },
-      "rows": 297039,
+      "rows": 297052,
       "source_agreement": {
         "conflict_count_reason": "Raw source observations were not retained consistently in legacy rows.",
         "conflicts": null,
         "multi_source_consensus": 0,
         "official_direct": 4,
         "official_verified_match": 307,
-        "pending_official": 12127,
+        "pending_official": 12140,
         "single_secondary_source": 284312,
         "unknown": 289
       },
       "source_origin": {
         "community": 73376,
         "official": 311,
-        "secondary": 223063,
+        "secondary": 223076,
         "unknown": 289
       },
       "source_verification": {
         "official_direct": 4,
         "official_verified_match": 307,
-        "pending_official": 12127,
+        "pending_official": 12140,
         "single_secondary_source": 284312,
         "unknown": 289
       },
       "structural_validity": {
         "unchecked": 311,
-        "valid": 296728
+        "valid": 296741
       }
     },
     "lotto535": {
@@ -6842,12 +6842,12 @@
   "schema_version": 1,
   "totals": {
     "cross_checked_rows": 6901,
-    "draw_rows": 405581,
+    "draw_rows": 405611,
     "draws_with_prizes": 6774,
     "duplicate_draw_keys": 0,
     "official_source_rows": 7861,
     "prize_rows": 49389,
-    "result_rows": 405581,
-    "structurally_valid_rows": 404796
+    "result_rows": 405611,
+    "structurally_valid_rows": 404826
   }
 }
